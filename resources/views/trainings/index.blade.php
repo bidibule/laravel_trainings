@@ -8,19 +8,22 @@
       <tr class="thead-dark">
         <th scope="col">#</th>
         <th scope="col">Name</th>
-
+        <th scope="col">Effective Date</th>
+        <th scope="col">Status</th>
       </tr>
     </thead>
     <tbody>
-    @foreach($groups as $group)
+    @foreach($trainings as $training)
       <tr>
-        <th scope="row">{{ $group->id }}</th>
-        <td>{{ $group->name }}</td>
+        <th scope="row">{{ $training->id }}</th>
+        <td><a href="{{ route('trainings.edit',['id' => $training->id ]) }}">{{ $training->name }}</a></td>
+        <td>{{ $training->effective_date }}</td>
+        <td>{{ config('app.training_statuses.'.$training->status) }}</td>
       </tr>
     @endforeach
     </tbody>
   </table>
 </div>
-<a class="btn btn-primary" href="{{  route('groups.create') }}" role="button">Add group</a>
+<a class="btn btn-primary" href="{{  route('trainings.create') }}" role="button">Add training</a>
 
 @endsection

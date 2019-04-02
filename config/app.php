@@ -228,4 +228,13 @@ return [
 
     ],
 
+    // for Training statuses
+    'training_statuses' => [
+        0 => 'Draft',
+        1 => 'Obsolete',
+        2 => 'Effective & empty',
+        3 => 'Effective & Filled',
+        4 => 'Approved'
+    ]
+
 ];

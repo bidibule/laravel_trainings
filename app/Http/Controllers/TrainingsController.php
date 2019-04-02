@@ -15,6 +15,7 @@ class TrainingsController extends Controller
     public function index()
     {
         $trainings = Training::all();
+        
 
         return view('trainings.index', compact('trainings'));
     }
@@ -26,7 +27,7 @@ class TrainingsController extends Controller
      */
     public function create()
     {
-        //
+        return view('trainings.create');
     }
 
     /**
@@ -37,7 +38,16 @@ class TrainingsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // Validation step
+        $attributes = $request->validate([
+            'name' => 'required|max:255',
+            'effective_date' => 'required|date_format:d-m-Y',
+            'status' => 'integer|between:0,5'
+        ]);
+        
+        Training::create($attributes);
+
+        return redirect()->route('trainings.index');
     }
 
     /**
@@ -59,7 +69,9 @@ class TrainingsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $training= Training::find($id);
+
+        return view('trainings.edit',compact('training'));
     }
 
     /**
@@ -71,7 +83,17 @@ class TrainingsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        // Validation step
+        $attributes = $request->validate([
+            'name' => 'required|max:255',
+            'effective_date' => 'required|date_format:d-m-Y',
+            'status' => 'integer|between:0,5'
+        ]);
+ 
+        $training = Training::findOrFail($id);
+        $training->update($attributes);
+
+        return redirect()->route('trainings.index');
     }
 
     /**

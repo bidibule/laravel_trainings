@@ -14,11 +14,17 @@
             </a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" href="{{  route('groups.index') }}">
-                <span data-feather="file"></span>
-                Groups
-              </a>
-            </li>
+            <a class="nav-link" href="{{  route('groups.index') }}">
+              <span data-feather="file"></span>
+              Groups
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{  route('trainings.index') }}">
+              <span data-feather="file"></span>
+              Trainings
+            </a>
+          </li>
         </ul>
 
       
