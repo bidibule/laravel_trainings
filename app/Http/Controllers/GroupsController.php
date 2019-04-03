@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
 use App\Group;
 
 class GroupsController extends Controller
@@ -66,7 +67,10 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $group = Group::find($id);
+        $users = User::all();
+
+        return view('groups.edit',compact('group','users'));
     }
 
     /**
@@ -78,7 +82,18 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $attributes = $request->validate([
+            'name' => 'required|max:255',
+        ]);
+        
+        $group = Group::findOrFail($id);
+        
+        // Sync groups
+        $group->users()->sync($request->get('users'));
+        //updating group
+        $group->update($attributes);
+
+        return redirect()->route('groups.index');
     }
 
     /**

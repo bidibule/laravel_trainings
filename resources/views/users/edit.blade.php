@@ -33,8 +33,18 @@
                 Your password must be 8-20 characters long, contain letters and numbers, and must not contain spaces, special characters, or emoji.
         </small>
     </div>
+    <div class="form-group">
+        <label for="groups">Groups</label>
+        <select multiple class="form-control" id="groups" name="groups[]">   
+
+        @foreach($groups as $group)
+            <option value="{{ $group->id }}" {{  in_array($group->id, old('groups', $user->groups->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $group->name }}</option>          
+        @endforeach 
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Edit user</button>
 </form>
 
 
 @endsection
+

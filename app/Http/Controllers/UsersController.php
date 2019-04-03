@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
 
 use App\User;
+use App\Group;
 
 class UsersController extends Controller
 {
@@ -78,8 +79,9 @@ class UsersController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
+        $groups = Group::all();
 
-        return view('users.edit',compact('user'));
+        return view('users.edit',compact('user','groups'));
     }
 
     /**
@@ -103,10 +105,12 @@ class UsersController extends Controller
             $attributes['password'] = Hash::make($attributes['password']);
         else
             unset($attributes['password']);
-        
-
 
         $user = User::findOrFail($id);
+
+        // Sync groups
+        $user->groups()->sync($request->get('groups'));
+
         $user->update($attributes);
 
         return redirect()->route('users.index');

@@ -15,7 +15,7 @@
     @foreach($groups as $group)
       <tr>
         <th scope="row">{{ $group->id }}</th>
-        <td>{{ $group->name }}</td>
+        <td><a href="{{ route('groups.edit',['id' => $group->id]) }}"">{{ $group->name }}</a></td>
       </tr>
     @endforeach
     </tbody>
