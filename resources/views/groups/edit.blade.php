@@ -21,7 +21,7 @@
         <select multiple class="form-control" id="users" name="users[]">   
 
         @foreach($users as $user)
-            <option value="{{ $user->id }}" {{  in_array($user->id, old('groups', $user->groups->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $user->name }}</option>          
+            <option value="{{ $user->id }}" {{  in_array($user->id, old('users', $group->users->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $user->name }}</option>          
         @endforeach 
         </select>
     </div>

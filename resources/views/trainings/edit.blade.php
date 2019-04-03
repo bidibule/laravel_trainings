@@ -37,7 +37,16 @@
                 Please choose an status for this training.
             </div>
             @endif
-    </div>     
+    </div> 
+    <div class="form-group">
+        <label for="users">Users</label>
+        <select multiple class="form-control" id="users" name="users[]">   
+
+        @foreach($users as $user)
+            <option value="{{ $user->id }}" {{  in_array($user->id, old('users', $training->users->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $user->name }}</option>          
+        @endforeach 
+        </select>
+    </div>    
     <button type="submit" class="btn btn-primary">Update training</button>
 </form>
 

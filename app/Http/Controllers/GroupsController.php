@@ -15,7 +15,7 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        $groups = Group::all();
+        $groups = Group::with('users')->get();
 
         return view('groups.index', compact('groups'));
     }

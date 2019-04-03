@@ -7,6 +7,7 @@ use Illuminate\Validation\Rule;
 
 use App\User;
 use App\Group;
+use App\Training;
 
 class UsersController extends Controller
 {
@@ -80,8 +81,9 @@ class UsersController extends Controller
     {
         $user = User::find($id);
         $groups = Group::all();
+        $trainings = Training::all();
 
-        return view('users.edit',compact('user','groups'));
+        return view('users.edit',compact('user','groups','trainings'));
     }
 
     /**
@@ -110,6 +112,9 @@ class UsersController extends Controller
 
         // Sync groups
         $user->groups()->sync($request->get('groups'));
+
+        // Sync trainings
+        $user->trainings()->sync($request->get('trainings'));
 
         $user->update($attributes);
 

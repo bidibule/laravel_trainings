@@ -40,4 +40,8 @@ class User extends Authenticatable
     public function groups(){
         return $this->belongsToMany(Group::class);
     }
+
+    public function trainings(){
+        return $this->belongsToMany(Training::class);
+    }
 }

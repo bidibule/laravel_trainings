@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Training;
+use App\User;
 
 class TrainingsController extends Controller
 {
@@ -69,9 +70,10 @@ class TrainingsController extends Controller
      */
     public function edit($id)
     {
-        $training= Training::find($id);
+        $training = Training::find($id);
+        $users = User::all();
 
-        return view('trainings.edit',compact('training'));
+        return view('trainings.edit',compact('training','users'));
     }
 
     /**
@@ -91,6 +93,11 @@ class TrainingsController extends Controller
         ]);
  
         $training = Training::findOrFail($id);
+        
+        // Sync Users
+        $training->users()->sync($request->get('users'));
+
+
         $training->update($attributes);
 
         return redirect()->route('trainings.index');

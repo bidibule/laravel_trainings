@@ -42,6 +42,15 @@
         @endforeach 
         </select>
     </div>
+    <div class="form-group">
+        <label for="groups">Trainings</label>
+        <select multiple class="form-control" id="groups" name="trainings[]">   
+
+        @foreach($trainings as $training)
+            <option value="{{ $training->id }}" {{  in_array($training->id, old('trainings', $user->trainings->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $training->name }}</option>          
+        @endforeach 
+        </select>
+    </div>
     <button type="submit" class="btn btn-primary">Edit user</button>
 </form>
 

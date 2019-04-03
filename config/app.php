@@ -161,7 +161,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Barryvdh\Debugbar\ServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -174,6 +173,7 @@ return [
         App\Providers\AuthServiceProvider::class,
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
+        App\Providers\TelescopeServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
     ],
@@ -236,6 +236,12 @@ return [
         2 => 'Effective & empty',
         3 => 'Effective & Filled',
         4 => 'Approved'
+    ],
+     // for Training statuses
+     'training_user_statuses' => [
+        0 => 'not trained',
+        1 => 'trained',
+       
     ]
 
 ];

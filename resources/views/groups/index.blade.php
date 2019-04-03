@@ -8,7 +8,7 @@
       <tr class="thead-dark">
         <th scope="col">#</th>
         <th scope="col">Name</th>
-
+        <th scope="col">Users</th>
       </tr>
     </thead>
     <tbody>
@@ -16,6 +16,11 @@
       <tr>
         <th scope="row">{{ $group->id }}</th>
         <td><a href="{{ route('groups.edit',['id' => $group->id]) }}"">{{ $group->name }}</a></td>
+        <td>
+          @foreach($group->users as $user)
+          {{ $user->name }}<br/>
+          @endforeach
+        </td>
       </tr>
     @endforeach
     </tbody>
