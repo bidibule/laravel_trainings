@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Training;
 use App\User;
+use App\Group;
 
 class TrainingsController extends Controller
 {
@@ -43,7 +44,7 @@ class TrainingsController extends Controller
         $attributes = $request->validate([
             'name' => 'required|max:255',
             'effective_date' => 'required|date_format:d-m-Y',
-            'status' => 'integer|between:0,5'
+            'status' => 'integer|between:0,3'
         ]);
         
         Training::create($attributes);
@@ -58,8 +59,7 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {
-        //
+    {  //
     }
 
     /**
@@ -72,8 +72,9 @@ class TrainingsController extends Controller
     {
         $training = Training::find($id);
         $users = User::all();
+        $groups = Group::all();
 
-        return view('trainings.edit',compact('training','users'));
+        return view('trainings.edit',compact('training','users','groups'));
     }
 
     /**
@@ -89,13 +90,20 @@ class TrainingsController extends Controller
         $attributes = $request->validate([
             'name' => 'required|max:255',
             'effective_date' => 'required|date_format:d-m-Y',
-            'status' => 'integer|between:0,5'
+            'status' => 'integer|between:0,3'
         ]);
  
         $training = Training::findOrFail($id);
         
         // Sync Users
-        $training->users()->sync($request->get('users'));
+       // $training->users()->sync($request->get('users'));
+
+        // Sync Groups
+        $training->groups()->sync($request->get('groups'));
+
+        // Sync Trainings
+        if($request->has('groups'))
+            $training->assignTrainings($request->get('groups'));
 
 
         $training->update($attributes);
@@ -111,6 +119,7 @@ class TrainingsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        // récupération des users associés aux groupes
+
     }
 }

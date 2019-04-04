@@ -38,6 +38,7 @@
             </div>
             @endif
     </div> 
+    <!-- List of users associated to it -->
     <div class="form-group">
         <label for="users">Users</label>
         <select multiple class="form-control" id="users" name="users[]">   
@@ -46,7 +47,17 @@
             <option value="{{ $user->id }}" {{  in_array($user->id, old('users', $training->users->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $user->name }}</option>          
         @endforeach 
         </select>
-    </div>    
+    </div>
+     <!-- List of groups associated to it -->
+    <div class="form-group">
+        <label for="groups">Groups</label>
+        <select multiple class="form-control" id="users" name="groups[]">   
+
+        @foreach($groups as $group)
+            <option value="{{ $group->id }}" {{  in_array($group->id, old('groups', $training->groups->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $group->name }}</option>          
+        @endforeach 
+        </select>
+    </div>      
     <button type="submit" class="btn btn-primary">Update training</button>
 </form>
 

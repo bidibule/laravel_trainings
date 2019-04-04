@@ -88,7 +88,7 @@ class GroupsController extends Controller
         
         $group = Group::findOrFail($id);
         
-        // Sync groups
+        // Sync users
         $group->users()->sync($request->get('users'));
         //updating group
         $group->update($attributes);

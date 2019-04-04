@@ -9,6 +9,7 @@
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Email</th>
+        <th>Action</th>
       </tr>
     </thead>ma
     <tbody>
@@ -17,6 +18,7 @@
         <th scope="row">{{ $user->id }}</th>
         <td><a href="{{ route('users.edit',['id' => $user->id]) }}">{{ $user->name }}</a></td>
         <td>{{ $user->email }}</td>
+        <td><a href="{{ route('users.edit',['id' => $user->id ]) }}">{{ __('edit') }}</a> - <a href="{{ route('users.show',['id' => $user->id ]) }}">{{ __('view') }}</a></td>
       </tr>
     @endforeach
     </tbody>

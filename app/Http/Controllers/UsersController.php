@@ -68,7 +68,9 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        //
+        $user = User::where('id',$id)->with('trainings')->first();
+      
+        return view('users.show',compact('user'));
     }
 
     /**

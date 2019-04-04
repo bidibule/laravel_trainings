@@ -10,6 +10,7 @@
         <th scope="col">Name</th>
         <th scope="col">Effective Date</th>
         <th scope="col">Status</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <td><a href="{{ route('trainings.edit',['id' => $training->id ]) }}">{{ $training->name }}</a></td>
         <td>{{ $training->effective_date }}</td>
         <td>{{ config('app.training_statuses.'.$training->status) }}</td>
+        <td><a href="{{ route('trainings.edit',['id' => $training->id ]) }}">{{ __('edit') }}</a> - <a href="{{ route('trainings.show',['id' => $training->id ]) }}">{{ __('view') }}</a></td>
       </tr>
     @endforeach
     </tbody>

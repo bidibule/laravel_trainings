@@ -233,14 +233,13 @@ return [
     'training_statuses' => [
         0 => 'Draft',
         1 => 'Obsolete',
-        2 => 'Effective & empty',
-        3 => 'Effective & Filled',
-        4 => 'Approved'
+        2 => 'Effective',
+        3 => 'Approved'
     ],
      // for Training statuses
      'training_user_statuses' => [
-        0 => 'not trained',
-        1 => 'trained',
+        0 => 'Complete',
+        1 => 'Not complete',
        
     ]
 

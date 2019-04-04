@@ -14,12 +14,15 @@ class CreateTrainingsTable extends Migration
     public function up()
     {
         Schema::create('trainings', function (Blueprint $table) {
-            $table->unsignedInteger('id');
+            
+            $table->increments('id')->unsignedInteger();
             $table->string('name');
             $table->datetime('effective_date');
             $table->unsignedInteger('status');
             $table->text('attachment');
             $table->timestamps();
+
+
         });
     }
 
