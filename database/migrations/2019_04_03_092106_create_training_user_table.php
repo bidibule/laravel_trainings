@@ -17,8 +17,8 @@ class CreateTrainingUserTable extends Migration
             
             $table->unsignedInteger('training_id');
             $table->unsignedInteger('user_id');
-            $table->unsignedInteger('status');
-            $table->date('completion_date')->nullable;
+            $table->unsignedInteger('status')->default('0');
+            $table->date('completion_date')->nullable();
             $table->timestamps();
 
             $table->primary(['training_id', 'user_id']);
