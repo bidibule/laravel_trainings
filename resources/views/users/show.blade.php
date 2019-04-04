@@ -16,15 +16,26 @@
           </tr>
         </thead>
         <tbody>
-        
+        <?php     $ko = $ok = 0; ?>
             @foreach($user->trainings as $training)
+              <?php 
+              
+          
+              if($training->pivot->status == 0)
+                $ko+=1;
+              else
+                $ok+=1; 
+              
+              ?> 
             <tr>
               <th scope="row">{{ $training->id }}</th>
               <td>{{ $training->name }}</a></td>
               <td class="{{ ($training->pivot->status == 0 ) ? 'bg-warning' : 'bg-success' }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</td>
               <td>{{ $training->pivot->completion_date }}</td>
             </tr>
+
           @endforeach
         </tbody>
       </table>
+      Uncompleted: {{ $ko }} - Completed: {{ $ok }}
 @endsection

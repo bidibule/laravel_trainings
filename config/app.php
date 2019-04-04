@@ -238,8 +238,8 @@ return [
     ],
      // for Training statuses
      'training_user_statuses' => [
-        0 => 'Complete',
-        1 => 'Not complete',
+        0 => 'Not Complete',
+        1 => 'Complete',
        
     ]
 
