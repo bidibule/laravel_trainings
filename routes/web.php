@@ -16,6 +16,9 @@ Route::resource('users', 'UsersController');
 Route::resource('groups', 'GroupsController');
 Route::resource('trainings', 'TrainingsController');
 
+Route::get('users/{user}/training/{training}','UserTrainingController@getUserTraining')->name('trainings.user_training');
+Route::patch('users/{user}/training/{training}','UserTrainingController@updateTrainingStatus')->name('trainings.update_status');
+
 Auth::routes(['register' => false]);
 
 

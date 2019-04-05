@@ -59,7 +59,10 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    {  //
+    {  
+        $training = Training::find($id);
+
+        return view('trainings.show',compact('training'));
     }
 
     /**

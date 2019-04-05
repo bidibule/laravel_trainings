@@ -1,5 +1,6 @@
 @extends('layout.admin')
 @section('content')
+<p><img src="{{ $user->avatar }}" /></p>
     <label for="name">Name: </label>
     <p>{{ $user->name }}</p>
     <label for="name">Email: </label>
@@ -16,7 +17,11 @@
           </tr>
         </thead>
         <tbody>
-        <?php     $ko = $ok = 0; ?>
+        <?php     
+          $ko = $ok = 0;
+          $total_trainings = count($user->trainings);
+        
+        ?>
             @foreach($user->trainings as $training)
               <?php 
               
@@ -29,7 +34,7 @@
               ?> 
             <tr>
               <th scope="row">{{ $training->id }}</th>
-              <td>{{ $training->name }}</a></td>
+            <td><a href="{{ route('trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
               <td class="{{ ($training->pivot->status == 0 ) ? 'bg-warning' : 'bg-success' }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</td>
               <td>{{ $training->pivot->completion_date }}</td>
             </tr>
@@ -37,5 +42,5 @@
           @endforeach
         </tbody>
       </table>
-      Uncompleted: {{ $ko }} - Completed: {{ $ok }}
+      Uncompleted: {{ ($ko/$total_trainings)*100 }}% ({{ $ko }}) - Completed: {{ ($ok/$total_trainings)*100 }}% ({{ $ok }})
 @endsection
