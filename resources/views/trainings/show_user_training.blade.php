@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.backend')
 @section('content')
     <label for="name">Name: </label>
     <p>{{ $training->name }}</p>
