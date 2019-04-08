@@ -12,6 +12,8 @@
 */
 
 Route::get('/', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@dashboard')->name('dashboard');
+
 Route::resource('users', 'UsersController');
 Route::resource('groups', 'GroupsController');
 Route::resource('trainings', 'TrainingsController');

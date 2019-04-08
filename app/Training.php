@@ -23,11 +23,11 @@ class Training extends Model
     ];
 
     //Format effective date for input/ouput
-   /* public function setEffectiveDateAttribute($input)
+    public function setEffectiveDateAttribute($input)
     {
         $this->attributes['effective_date'] = Carbon::createFromFormat('d-m-Y', $input)->format('Y-m-d');
     }
-
+/*
     public function getEffectiveDateAttribute($input)
     {
         return Carbon::createFromFormat('Y-m-d', $input)->format('d-m-Y');

@@ -1,11 +1,18 @@
 @extends('layouts.backend')
+@section('title','List of groups ('.count($groups).')') 
 @section('content')
 
-<h2>List of groups</h2>
-<div class="table-responsive">
-  <table class="table table-striped table-sm">
-    <thead>
-      <tr class="thead-dark">
+<div class="block">
+    <div class="block-header block-header-default">
+        <h3 class="block-title">&nbsp;</h3>
+        <div class="block-options">
+          <a href="{{  route('groups.create') }}"><button type="button" class="btn btn-sm btn-secondary">Add group</button></a>
+        </div>
+      </div>
+      <div class="block-content">
+  <table class="table table-striped">
+    <thead class="thead-light">
+      <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
         <th scope="col">Users</th>
@@ -14,7 +21,7 @@
     <tbody>
     @foreach($groups as $group)
       <tr>
-        <th scope="row">{{ $group->id }}</th>
+        <th scope="row">{{ $loop->iteration }}</th>
         <td><a href="{{ route('groups.edit',['id' => $group->id]) }}"">{{ $group->name }}</a></td>
         <td>
           @foreach($group->users as $user)
@@ -26,6 +33,6 @@
     </tbody>
   </table>
 </div>
-<a class="btn btn-primary" href="{{  route('groups.create') }}" role="button">Add group</a>
+</div>
 
 @endsection
