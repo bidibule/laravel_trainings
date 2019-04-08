@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layouts.admin')
 @section('content')
     <label for="name">Name: </label>
     <p>{{ $training->name }}</p>
@@ -11,7 +11,7 @@
         <div class="form-check">
 
           <input type="checkbox" class="form-check-input" name="completed" id="completed" onclick="this.form.submit()" {{ ($training->pivot->status) ? 'checked' : '' }}>
-          <label class="form-check-label" for="complete">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</label>
+          <label class="form-check-label" for="complete">{{ config('app.training_user_statuses.'.$training->pivot->status) }} {{ ($training->pivot->status) ? '('.$training->pivot->completion_date.')' :'' }}</label>
         </div>
       </form>
     

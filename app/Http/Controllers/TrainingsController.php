@@ -99,7 +99,7 @@ class TrainingsController extends Controller
         $training = Training::findOrFail($id);
         
         // Sync Users
-       // $training->users()->sync($request->get('users'));
+        // $training->users()->sync($request->get('users'));
 
         // Sync Groups
         $training->groups()->sync($request->get('groups'));

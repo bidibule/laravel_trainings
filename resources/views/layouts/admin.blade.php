@@ -1,23 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    @include('layout.partials.head')
+    @include('layouts.partials.head')
   </head>
 
   <body>
 
-	@include('layout.partials.topnav')
+	@include('layouts.partials.topnav')
     
     <div class="container-fluid">
         <div class="row">
             
-            @include('layout.partials.mainnav')
+            @include('layouts.partials.mainnav')
             
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                   @yield('content')              
             </main>
 
-	        @include('layout.partials.footer-scripts')
+	        @include('layouts.partials.footer-scripts')
 
         </div>
     </div>

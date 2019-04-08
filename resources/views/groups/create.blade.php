@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layouts.admin')
 @section('content')
 
 <form method="POST" action="{{ route('groups.store') }}">

@@ -1,4 +1,4 @@
-@extends('layout.admin')
+@extends('layouts.admin')
 @section('content')
 <p><img src="{{ $user->avatar }}" /></p>
     <label for="name">Name: </label>
