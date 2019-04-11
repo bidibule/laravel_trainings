@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),gooel drive
+    'debug' => env('APP_DEBUG', true),
 
     /*
     |--------------------------------------------------------------------------
