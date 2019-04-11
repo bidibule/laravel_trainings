@@ -17,7 +17,7 @@ class CreateTrainingsTable extends Migration
             
             $table->increments('id')->unsignedInteger();
             $table->string('name');
-            $table->datetime('effective_date');
+            $table->date('effective_date');
             $table->unsignedInteger('status');
             $table->text('attachment');
             $table->timestamps();

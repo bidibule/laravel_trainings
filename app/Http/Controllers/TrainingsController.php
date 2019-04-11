@@ -53,15 +53,18 @@ class TrainingsController extends Controller
     }
 
     /**
-     * Display the specified resource.
+     * Display the specified resource with the users and completion status.
      *
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {  
-        $training = Training::find($id);
+        $training = Training::with('users')->find($id);
 
+        //Checking percentage
+        $training->total_completion_percentage = ($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100;
+      
         return view('trainings.show',compact('training'));
     }
 
@@ -99,7 +102,7 @@ class TrainingsController extends Controller
         $training = Training::findOrFail($id);
         
         // Sync Users
-        // $training->users()->sync($request->get('users'));
+        $training->users()->sync($request->get('users'));
 
         // Sync Groups
         $training->groups()->sync($request->get('groups'));

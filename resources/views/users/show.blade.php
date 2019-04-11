@@ -34,7 +34,7 @@
               ?> 
             <tr>
               <th scope="row">{{ $training->id }}</th>
-            <td><a href="{{ route('trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
+              <td><a href="{{ route('trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
               <td class="{{ ($training->pivot->status == 0 ) ? 'bg-warning' : 'bg-success' }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</td>
               <td>{{ $training->pivot->completion_date }}</td>
             </tr>

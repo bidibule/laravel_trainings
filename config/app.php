@@ -39,7 +39,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', true),gooel drive
 
     /*
     |--------------------------------------------------------------------------
@@ -234,7 +234,7 @@ return [
         0 => 'Draft',
         1 => 'Obsolete',
         2 => 'Effective',
-        3 => 'Approved'
+        3 =>  'Approved'
     ],
      // for Training statuses
      'training_user_statuses' => [

@@ -44,4 +44,6 @@ class User extends Authenticatable
     public function trainings(){
         return $this->belongsToMany(Training::class)->withPivot('status','completion_date');
     }
+
+   
 }

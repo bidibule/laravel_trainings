@@ -27,18 +27,18 @@ class Training extends Model
     {
         $this->attributes['effective_date'] = Carbon::createFromFormat('d-m-Y', $input)->format('Y-m-d');
     }
-/*
+
     public function getEffectiveDateAttribute($input)
     {
         return Carbon::createFromFormat('Y-m-d', $input)->format('d-m-Y');
-    } */
+    } 
     
     public function users(){
-        return $this->belongsToMany(User::class)->withPivot('status','completion_date');
+        return $this->belongsToMany(User::class)->withPivot('status','completion_date')->orderBy('name','ASC');
     }
 
     public function groups(){
-        return $this->belongsToMany(Group::class);
+        return $this->belongsToMany(Group::class)->orderBy('name','ASC');
     }
 
     public function assignTrainings($group_ids){
@@ -48,9 +48,15 @@ class Training extends Model
             $query->whereIn('group_id',$group_ids);
         })->get();
 
-        // on sycnhronise les tables Trainings-Users
+        // On sycnhronise les tables Trainings-Users
         $this->users()->sync($user_ids);
        
 
     }
+
+  /*  public function statusCount() {
+        return $this->belongsToMany(User::class)
+            ->selectRaw('count(training_user.status_id) as percentage_completed')
+            ->groupBy('status');
+    }*/
 }

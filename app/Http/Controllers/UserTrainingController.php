@@ -23,6 +23,14 @@ class UserTrainingController extends Controller
 
     }
 
+    public function getUsersTraining(Training $training_id){
+        
+        $training = $training_id->users()->get();
+
+        return view('trainings.show_training_and_users',compact('training'));
+
+    }
+
     /**
      * Update the completion specific training for this user
      *

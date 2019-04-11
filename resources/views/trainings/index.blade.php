@@ -17,6 +17,7 @@
         <th scope="col">Name</th>
         <th scope="col">Effective Date</th>
         <th scope="col">Status</th>
+        <th scope="col">% Completion</th>
         <th scope="col">Action</th>
       </tr>
     </thead>
@@ -27,6 +28,8 @@
         <td><a href="{{ route('trainings.edit',['id' => $training->id ]) }}">{{ $training->name }}</a></td>
         <td>{{ $training->effective_date }}</td>
         <td>{{ config('app.training_statuses.'.$training->status) }}</td>
+        <td>{{ round((($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100),2) }}%</td>
+          </td>
         <td class="text-center">
           <div class="btn-group">
             <a href="{{ route('trainings.edit',['id' => $training->id ]) }}">
@@ -36,7 +39,7 @@
               </a>
             <a href="{{ route('trainings.show',['id' => $training->id ]) }}">
                 <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
-                  <i class="fa fa-times"></i>
+                  <i class="fa fa-eye"></i>
                 </button>
               </a>
           </div>

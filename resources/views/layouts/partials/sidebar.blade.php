@@ -1,7 +1,7 @@
 <div class="content-side content-side-full">
     <ul class="nav-main">
         <li>
-            <a href="{{ route('dashboard') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
+            <a href="{{ route('home') }}"><i class="si si-cup"></i><span class="sidebar-mini-hide">Dashboard</span></a>
         </li>
         <li>
             <a href="{{ route('users.index') }}"><i class="si si-people"></i><span class="sidebar-mini-hide">Users</span></a>

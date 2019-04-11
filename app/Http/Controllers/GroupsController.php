@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\User;
 use App\Group;
+use App\Training;
 
 class GroupsController extends Controller
 {
@@ -68,9 +69,10 @@ class GroupsController extends Controller
     public function edit($id)
     {
         $group = Group::find($id);
-        $users = User::all();
+        $users = User::orderBy('name','ASC')->get();
+        $trainings = Training::orderBy('name', 'ASC')->get();
 
-        return view('groups.edit',compact('group','users'));
+        return view('groups.edit',compact('group','users', 'trainings'));
     }
 
     /**
@@ -90,8 +92,18 @@ class GroupsController extends Controller
         
         // Sync users
         $group->users()->sync($request->get('users'));
+
+        // Sync trainings
+        $group->trainings()->sync($request->get('trainings'));
+
         //updating group
         $group->update($attributes);
+
+         // Sync new users, new training and groups
+        if($request->has('users'))
+            $training->assignTrainings($id);
+
+
 
         return redirect()->route('groups.index');
     }
