@@ -19,9 +19,8 @@ class CreateTrainingsTable extends Migration
             $table->string('name');
             $table->date('effective_date');
             $table->unsignedInteger('status');
-            $table->text('attachment');
+            $table->text('path')->nullable;
             $table->timestamps();
-
 
         });
     }

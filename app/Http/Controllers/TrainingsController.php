@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
+use Illuminate\Http\UploadedFile;
+
 use App\Training;
 use App\User;
 use App\Group;
@@ -44,9 +47,19 @@ class TrainingsController extends Controller
         $attributes = $request->validate([
             'name' => 'required|max:255',
             'effective_date' => 'required|date_format:d-m-Y',
-            'status' => 'integer|between:0,3'
+            'status' => 'integer|between:0,3',
+            'file-training' => 'file|mimes:pdf'
         ]);
-        
+
+        // Store uploaded file
+        $file_training = $request->file('file-training');
+        $file_training->store('trainings');
+
+        // Gettign a unique filename for path
+        $path = $this->getUniqueFilename($file_training);
+
+        $attributes['path'] = $file_training->storeAs('trainings',$path);
+
         Training::create($attributes);
 
         return redirect()->route('trainings.index');
@@ -127,5 +140,17 @@ class TrainingsController extends Controller
     {
         // récupération des users associés aux groupes
 
+    }
+
+    /**
+     *  Sanitize original filename and get a unique filename for the uploaded PDF
+     */
+    protected function getUniqueFilename(UploadedFile $file) {
+        
+        //get file without ext
+        $ext = pathinfo($file->getClientOriginalName(), PATHINFO_EXTENSION);
+        $filename = basename($file->getClientOriginalName(),".".$ext);
+
+        return Str::random(12).'-'.Str::lower(Str::slug($filename).'.'.$file->guessClientExtension());
     }
 }

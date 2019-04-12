@@ -27,13 +27,11 @@
           <td>{{ $user->email }}</td>
           <td class="text-center">
             <div class="btn-group">
-              <a href="{{ route('users.edit',['id' => $user->id ]) }}">
-                  <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('Edit') }}">
-                      <i class="fa fa-pencil"></i>
-                  </button></a>
-              <a href="{{ route('users.show',['id' => $user->id ]) }}"><button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
-                      <i class="fa fa-times"></i>
-                  </button></a>
+              <a href="{{ route('users.show',['id' => $user->id ]) }}">
+                <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
+                      <i class="fa fa-eye"></i>
+              </button>
+              </a>
             </div>
           </td>
         </tr>

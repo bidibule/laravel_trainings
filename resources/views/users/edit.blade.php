@@ -48,30 +48,6 @@
             </div>
             <div class="form-group row">
                 <div class="col-md-9">
-                    <div class="form-material">
-                        <label for="groups">Groups</label>
-                        <select multiple class="form-control" id="groups" name="groups[]">   
-                        @foreach($groups as $group)
-                            <option value="{{ $group->id }}" {{  in_array($group->id, old('groups', $user->groups->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $group->name }}</option>          
-                        @endforeach 
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-9">
-                    <div class="form-material">
-                        <label for="groups">Trainings</label>
-                        <select multiple class="form-control" id="groups" name="trainings[]">   
-                        @foreach($trainings as $training)
-                            <option value="{{ $training->id }}" {{  in_array($training->id, old('trainings', $user->trainings->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $training->name }}</option>          
-                        @endforeach 
-                        </select>
-                    </div>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-md-9">
                     <button type="submit" class="btn btn-alt-primary">Edit user</button>
                 </div>
             </div>

@@ -28,7 +28,8 @@
         <td><a href="{{ route('trainings.edit',['id' => $training->id ]) }}">{{ $training->name }}</a></td>
         <td>{{ $training->effective_date }}</td>
         <td>{{ config('app.training_statuses.'.$training->status) }}</td>
-        <td>{{ round((($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100),2) }}%</td>
+
+        <td>{{ ($training->users->count() >0) ? round((($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100),2).'%' : '-' }}</td>
           </td>
         <td class="text-center">
           <div class="btn-group">

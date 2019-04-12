@@ -13,14 +13,22 @@ class Training extends Model
         'name', 
         'effective_date',
         'status',
-        'attachment'
+        'path'
     ];
 
     // Defining default values for column fields
     protected $attributes = [
         'status' => 0,
-        'attachment' => ''
+        'path' => ''
     ];
+
+    public function users(){
+        return $this->belongsToMany(User::class)->withPivot('status','completion_date')->orderBy('name','ASC');
+    }
+
+    public function groups(){
+        return $this->belongsToMany(Group::class)->orderBy('name','ASC');
+    }
 
     //Format effective date for input/ouput
     public function setEffectiveDateAttribute($input)
@@ -32,15 +40,10 @@ class Training extends Model
     {
         return Carbon::createFromFormat('Y-m-d', $input)->format('d-m-Y');
     } 
-    
-    public function users(){
-        return $this->belongsToMany(User::class)->withPivot('status','completion_date')->orderBy('name','ASC');
-    }
 
-    public function groups(){
-        return $this->belongsToMany(Group::class)->orderBy('name','ASC');
-    }
-
+    /**
+     * Assign trainings and Users
+     */
     public function assignTrainings($group_ids){
         
         // On récupère les users par rapport aux groupes choisis
@@ -54,9 +57,5 @@ class Training extends Model
 
     }
 
-  /*  public function statusCount() {
-        return $this->belongsToMany(User::class)
-            ->selectRaw('count(training_user.status_id) as percentage_completed')
-            ->groupBy('status');
-    }*/
+ 
 }

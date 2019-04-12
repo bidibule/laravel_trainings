@@ -34,7 +34,8 @@ class UsersController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $groups = Group::all();
+        return view('users.create',compact('groups'));
     }
 
     /**
@@ -111,16 +112,9 @@ class UsersController extends Controller
             unset($attributes['password']);
 
         $user = User::findOrFail($id);
-
-        // Sync groups
-        $user->groups()->sync($request->get('groups'));
-
-        // Sync trainings
-        $user->trainings()->sync($request->get('trainings'));
-
         $user->update($attributes);
 
-        return redirect()->route('users.index');
+        return redirect()->route('users.show',['id'=> $user->id]);
     }
 
     /**
