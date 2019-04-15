@@ -31,20 +31,18 @@ class Training extends Model
     }
 
     //Format effective date for input/ouput
-    public function setEffectiveDateAttribute($input)
-    {
+    public function setEffectiveDateAttribute($input){
         $this->attributes['effective_date'] = Carbon::createFromFormat('d-m-Y', $input)->format('Y-m-d');
     }
 
-    public function getEffectiveDateAttribute($input)
-    {
+    public function getEffectiveDateAttribute($input){
         return Carbon::createFromFormat('Y-m-d', $input)->format('d-m-Y');
     } 
 
     /**
      * Assign trainings and Users
      */
-    public function assignTrainings($group_ids){
+    public function syncUsersByGroups($group_ids){
         
         // On récupère les users par rapport aux groupes choisis
         $user_ids = User::whereHas('groups', function($query) use($group_ids){

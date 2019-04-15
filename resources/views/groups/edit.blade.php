@@ -16,27 +16,6 @@
                 </div>
                 @endif
             </div>    
-            
-            <div class="form-group material">
-                <label for="users">Users</label>
-                <select multiple class="form-control" id="users" name="users[]">   
-
-                @foreach($users as $user)
-                    <option value="{{ $user->id }}" {{  in_array($user->id, old('users', $group->users->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $user->name }}</option>          
-                @endforeach 
-                </select>
-            </div>
-
-            <div class="form-group material">
-
-                        <label for="groups">Trainings</label>
-                        <select multiple class="form-control" id="groups" name="trainings[]" size="15">   
-                        @foreach($trainings as $training)
-                            <option value="{{ $training->id }}" {{  in_array($training->id, old('trainings', $group->trainings->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $training->name }}</option>          
-                        @endforeach 
-                        </select>
-                  
-            </div>
             <button type="submit" class="btn btn-primary">Edit group</button>
         </form>
     </div>

@@ -15,7 +15,7 @@
       <tr>
         <th scope="col">#</th>
         <th scope="col">Name</th>
-        <th scope="col">Users</th>
+        <th scope="col">&nbsp;</th>
       </tr>
     </thead>
     <tbody>
@@ -24,9 +24,13 @@
         <th scope="row">{{ $loop->iteration }}</th>
         <td><a href="{{ route('groups.edit',['id' => $group->id]) }}"">{{ $group->name }}</a></td>
         <td>
-          @foreach($group->users as $user)
-          {{ $user->name }}<br/>
-          @endforeach
+            <div class="btn-group">
+                <a href="{{ route('groups.show',['id' => $group->id ]) }}">
+                  <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
+                        <i class="fa fa-eye"></i>
+                </button>
+                </a>
+              </div>
         </td>
       </tr>
     @endforeach

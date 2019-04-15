@@ -1,7 +1,8 @@
 @extends('layouts.backend')
 @section('content')
-
-<form method="POST" action="/trainings/{{ $training->id }}"">
+<div class="block">
+    <div class="block-content">
+<form method="POST" action="/trainings/{{ $training->id }}" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
     <div class="form-group">
@@ -38,28 +39,40 @@
             </div>
             @endif
     </div> 
-    <!-- List of users associated to it -->
-    <div class="form-group">
-        <label for="users">Users</label>
-        <select multiple class="form-control" id="users" name="users[]">   
-
-        @foreach($users as $user)
-            <option value="{{ $user->id }}" {{  in_array($user->id, old('users', $training->users->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $user->name }}</option>          
-        @endforeach 
-        </select>
-    </div>
      <!-- List of groups associated to it -->
     <div class="form-group">
         <label for="groups">Groups</label>
-        <select multiple class="form-control" id="users" name="groups[]">   
+        <select multiple class="form-control" id="users" name="groups[]" size="{{ count($groups) }}">   
 
         @foreach($groups as $group)
             <option value="{{ $group->id }}" {{  in_array($group->id, old('groups', $training->groups->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $group->name }}</option>          
         @endforeach 
         </select>
     </div>      
-    <button type="submit" class="btn btn-primary">Update training</button>
-</form>
+    <div class="form-group">
+            <label>{{ __('Associated PDF')}}</label>
+            <p>{{ basename($training->path) }}
+                
+                <a href="{{ asset('storage/trainings/'.basename($training->path)) }}" target="_blank" title="Preview"><button type="button" class="btn btn-sm btn-circle btn-alt-secondary mr-5 mb-5">
+                    <i class="fa fa-eye"></i>
+                </button>
+                </a>
 
+            </a>
+            </p>
+
+            <input class="form-control" type="file" id="file-training" name="file-training">
+            <small id="effective_dateHelp" class="form-text text-muted">{{ __('PDF only')}}</small>
+            @if($errors->has('file_training'))
+            <div class="invalid-feedback">
+                Please choose a valid PDF file
+            </div>
+            @endif
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Update training</button>
+        </div>
+</form>
+</div>
     
 @endsection

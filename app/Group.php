@@ -22,14 +22,24 @@ class Group extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class)->orderBy('name','asc');
     }
 
     public function trainings(){
-        return $this->belongsToMany(Training::class);
+        return $this->belongsToMany(Training::class)->orderBy('name','asc');
     }
 
-    public function getTrainings($id){
-        return self::with('trainings');
+    public function syncUserAndTrainings($id){
+               
+        $users = User::whereHas('groups', function($q) use($id){$q->where('id',$id);})->get();
+
+        $trainings = Training::whereHas('groups', function($query) use($id){
+            $query->where('group_id',$id);
+        })->get();
+
+        foreach($trainings as $training){
+            $training->users()->sync($users);
+        }
     }
+
 }

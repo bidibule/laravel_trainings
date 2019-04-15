@@ -16,6 +16,7 @@
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
+          <th scope="col">Created on</th>
           <th class="text-center">Action</th>
         </tr>
       </thead>
@@ -23,8 +24,9 @@
         @foreach($users as $user)
         <tr>
           <th scope="row">{{ $loop->iteration }}</th>
-          <td><a href="{{ route('users.edit',['id' => $user->id]) }}">{{ $user->name }}</a></td>
+          <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
+          <td>{{ $user->created_at }}</td>
           <td class="text-center">
             <div class="btn-group">
               <a href="{{ route('users.show',['id' => $user->id ]) }}">

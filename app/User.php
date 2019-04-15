@@ -45,7 +45,7 @@ class User extends Authenticatable
         return $this->belongsToMany(Training::class)->withPivot('status','completion_date')->orderBy('name','ASC');
     }
 
-    public function assignTrainingsByGroups($groups_ids){
+    public function syncTrainingsByGroups($groups_ids){
                
         // On récupère les trainings par rapport aux groupes choisis
         $trainings_ids = Training::whereHas('groups', function($query) use($groups_ids){

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 use App\Training;
 use App\User;
@@ -30,8 +31,7 @@ class TrainingsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
-    {
+    public function create(){
         return view('trainings.create');
     }
 
@@ -41,8 +41,7 @@ class TrainingsController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
+    public function store(Request $request){
         // Validation step
         $attributes = $request->validate([
             'name' => 'required|max:255',
@@ -53,12 +52,11 @@ class TrainingsController extends Controller
 
         // Store uploaded file
         $file_training = $request->file('file-training');
-        $file_training->store('trainings');
 
-        // Gettign a unique filename for path
+        // Getting a unique filename for path
         $path = $this->getUniqueFilename($file_training);
 
-        $attributes['path'] = $file_training->storeAs('trainings',$path);
+        $attributes['path'] = $file_training->storeAs('public/trainings',$path);
 
         Training::create($attributes);
 
@@ -71,8 +69,7 @@ class TrainingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {  
+    public function show($id){  
         $training = Training::with('users')->find($id);
 
         //Checking percentage
@@ -87,8 +84,7 @@ class TrainingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
+    public function edit($id){
         $training = Training::find($id);
         $users = User::all();
         $groups = Group::all();
@@ -103,8 +99,7 @@ class TrainingsController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
+    public function update(Request $request, $id){
         // Validation step
         $attributes = $request->validate([
             'name' => 'required|max:255',
@@ -114,16 +109,30 @@ class TrainingsController extends Controller
  
         $training = Training::findOrFail($id);
         
-        // Sync Users
-        $training->users()->sync($request->get('users'));
-
-        // Sync Groups
         $training->groups()->sync($request->get('groups'));
 
         // Sync Trainings
         if($request->has('groups'))
-            $training->assignTrainings($request->get('groups'));
+            $training->syncUsersByGroups($request->get('groups'));
+        else {
+           // Removing all links
+            $training->users()->detach();
+        }
 
+        // Store uploaded file
+        if($request->has('file-training') != null){
+            $file_training = $request->file('file-training');
+    
+            // Getting a unique filename for path
+            $path = $this->getUniqueFilename($file_training);
+
+            $attributes['path'] = $file_training->storeAs('public/trainings',$path);
+
+            //delete old file
+            Storage::delete($training->path);
+
+        }
+        
 
         $training->update($attributes);
 
@@ -138,7 +147,7 @@ class TrainingsController extends Controller
      */
     public function destroy($id)
     {
-        // récupération des users associés aux groupes
+        
 
     }
 

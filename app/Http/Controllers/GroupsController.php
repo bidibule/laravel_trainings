@@ -44,9 +44,9 @@ class GroupsController extends Controller
             'name' => 'required|unique:groups|max:255',
         ]);
 
-        Group::create($attributes);
+        $new_group = Group::create($attributes);
 
-        return redirect()->route('groups.index');
+        return redirect()->route('groups.edit',['id'=> $new_group->id]);
     }
 
     /**
@@ -57,7 +57,8 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //
+        $group = Group::with('users', 'trainings')->findOrFail($id);
+        return  view('groups.show', compact('group'));
     }
 
     /**
@@ -89,21 +90,7 @@ class GroupsController extends Controller
         ]);
         
         $group = Group::findOrFail($id);
-        
-        // Sync users
-        $group->users()->sync($request->get('users'));
-
-        // Sync trainings
-        $group->trainings()->sync($request->get('trainings'));
-
-        //updating group
         $group->update($attributes);
-
-         // Sync new users, new training and groups
-        if($request->has('users'))
-            $training->assignTrainings($id);
-
-
 
         return redirect()->route('groups.index');
     }

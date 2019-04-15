@@ -16,7 +16,7 @@ class UserGroupsController extends Controller
         $user->groups()->sync($request->get('groups'));
 
         // Synchronisation des trainings associés
-        $user->assignTrainingsByGroups($request->get('groups'));
+        $user->syncTrainingsByGroups($request->get('groups'));
 
         return redirect()->route('users.show',['id'=> $user->id]);
     }
