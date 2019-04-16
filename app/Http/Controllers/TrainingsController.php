@@ -108,35 +108,22 @@ class TrainingsController extends Controller
         ]);
  
         $training = Training::findOrFail($id);
-        
-        $training->groups()->sync($request->get('groups'));
-
-        // Sync Trainings
-        if($request->has('groups'))
-            $training->syncUsersByGroups($request->get('groups'));
-        else {
-           // Removing all links
-            $training->users()->detach();
-        }
 
         // Store uploaded file
         if($request->has('file-training') != null){
             $file_training = $request->file('file-training');
-    
+            
             // Getting a unique filename for path
             $path = $this->getUniqueFilename($file_training);
-
             $attributes['path'] = $file_training->storeAs('public/trainings',$path);
 
             //delete old file
             Storage::delete($training->path);
-
         }
         
-
         $training->update($attributes);
 
-        return redirect()->route('trainings.index');
+        return redirect()->route('trainings.show',['id' => $training->id]);
     }
 
     /**

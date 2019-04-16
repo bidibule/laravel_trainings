@@ -55,7 +55,6 @@ class User extends Authenticatable
         // On sycnhronise les tables Trainings-Users
         $this->trainings()->sync($trainings_ids);
        
-
     }
 
    

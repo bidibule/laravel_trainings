@@ -51,7 +51,6 @@ class Training extends Model
 
         // On sycnhronise les tables Trainings-Users
         $this->users()->sync($user_ids);
-       
 
     }
 

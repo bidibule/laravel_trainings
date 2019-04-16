@@ -41,15 +41,6 @@
     </div> 
      <!-- List of groups associated to it -->
     <div class="form-group">
-        <label for="groups">Groups</label>
-        <select multiple class="form-control" id="users" name="groups[]" size="{{ count($groups) }}">   
-
-        @foreach($groups as $group)
-            <option value="{{ $group->id }}" {{  in_array($group->id, old('groups', $training->groups->pluck('id')->toArray())) ? 'selected' : ''  }}>{{ $group->name }}</option>          
-        @endforeach 
-        </select>
-    </div>      
-    <div class="form-group">
             <label>{{ __('Associated PDF')}}</label>
             <p>{{ basename($training->path) }}
                 

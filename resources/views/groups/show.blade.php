@@ -1,6 +1,8 @@
 @extends('layouts.backend') 
 @section('content')
 <div class="container">
+  <!-- Preview -->
+    
   <div class="row">
     <div class="col-12">
       <div class="block block-bordered">
