@@ -241,6 +241,7 @@ return [
         0 => 'Not Complete',
         1 => 'Complete',
        
-    ]
+     ],
+     'completion_goal' => 80
 
 ];

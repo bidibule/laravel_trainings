@@ -3,326 +3,185 @@
     
 
 @section('content')
-    <div class="row js-appear-enabled animated fadeIn" data-toggle="appear">
-        <!-- Row #1 -->
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-bag fa-3x text-body-bg-dark"></i>
-                    </div>
-                    <div class="font-size-h3 font-w600 js-count-to-enabled" data-toggle="countTo" data-speed="1000" data-to="1500">1500</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Sales</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-wallet fa-3x text-body-bg-dark"></i>
-                    </div>
-                    <div class="font-size-h3 font-w600">$<span data-toggle="countTo" data-speed="1000" data-to="780" class="js-count-to-enabled">780</span></div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Earnings</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-envelope-open fa-3x text-body-bg-dark"></i>
-                    </div>
-                    <div class="font-size-h3 font-w600 js-count-to-enabled" data-toggle="countTo" data-speed="1000" data-to="15">15</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Messages</div>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-xl-3">
-            <a class="block block-link-shadow text-right" href="javascript:void(0)">
-                <div class="block-content block-content-full clearfix">
-                    <div class="float-left mt-10 d-none d-sm-block">
-                        <i class="si si-users fa-3x text-body-bg-dark"></i>
-                    </div>
-                    <div class="font-size-h3 font-w600 js-count-to-enabled" data-toggle="countTo" data-speed="1000" data-to="4252">4252</div>
-                    <div class="font-size-sm font-w600 text-uppercase text-muted">Online</div>
-                </div>
-            </a>
-        </div>
-        <!-- END Row #1 -->
-    </div>
-    <div class="row js-appear-enabled animated fadeIn" data-toggle="appear">
-        <!-- Row #2 -->
-        <div class="col-md-6">
-            <div class="block">
-                <div class="block-header">
-                    <h3 class="block-title">
-                        Sales <small>This week</small>
-                    </h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                            <i class="si si-refresh"></i>
-                        </button>
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
-                </div>
-                <div class="block-content block-content-full">
-                    <div class="pull-all"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        <!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _es6/pages/be_pages_dashboard.js -->
-                        <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-                        <canvas class="js-chartjs-dashboard-lines chartjs-render-monitor" style="display: block; height: 216px; width: 432px;" width="864" height="432"></canvas>
-                    </div>
-                </div>
-                <div class="block-content">
-                    <div class="row items-push">
-                        <div class="col-6 col-sm-4 text-center text-sm-left">
-                            <div class="font-size-sm font-w600 text-uppercase text-muted">This Month</div>
-                            <div class="font-size-h4 font-w600">720</div>
-                            <div class="font-w600 text-success">
-                                <i class="fa fa-caret-up"></i> +16%
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-4 text-center text-sm-left">
-                            <div class="font-size-sm font-w600 text-uppercase text-muted">This Week</div>
-                            <div class="font-size-h4 font-w600">160</div>
-                            <div class="font-w600 text-danger">
-                                <i class="fa fa-caret-down"></i> -3%
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4 text-center text-sm-left">
-                            <div class="font-size-sm font-w600 text-uppercase text-muted">Average</div>
-                            <div class="font-size-h4 font-w600">24.3</div>
-                            <div class="font-w600 text-success">
-                                <i class="fa fa-caret-up"></i> +9%
-                            </div>
-                        </div>
-                    </div>
-                </div>
+<div class="row">
+    <div class="col-12">
+        <div class="block">
+            <div class="block-header block-header-default">
+                <h3 class="block-title">{{ __('Individual Training Compliance Status') }}</h3>
+            </div>
+            <div class="block-content">
+                    <div id="chartdiv-users" class="amcharts"></div>
             </div>
         </div>
-        <div class="col-md-6">
+       
+    </div>
+</div>
+<div class="row">
+        <div class="col-12">
             <div class="block">
-                <div class="block-header">
-                    <h3 class="block-title">
-                        Earnings <small>This week</small>
-                    </h3>
-                    <div class="block-options">
-                        <button type="button" class="btn-block-option" data-toggle="block-option" data-action="state_toggle" data-action-mode="demo">
-                            <i class="si si-refresh"></i>
-                        </button>
-                        <button type="button" class="btn-block-option">
-                            <i class="si si-wrench"></i>
-                        </button>
-                    </div>
+                <div class="block-header block-header-default">
+                    <h3 class="block-title">{{ __('Training Compliance Status per Group') }}</h3>
                 </div>
-                <div class="block-content block-content-full">
-                    <div class="pull-all"><div class="chartjs-size-monitor"><div class="chartjs-size-monitor-expand"><div class=""></div></div><div class="chartjs-size-monitor-shrink"><div class=""></div></div></div>
-                        <!-- Lines Chart Container functionality is initialized in js/pages/be_pages_dashboard.min.js which was auto compiled from _es6/pages/be_pages_dashboard.js -->
-                        <!-- For more info and examples you can check out http://www.chartjs.org/docs/ -->
-                        <canvas class="js-chartjs-dashboard-lines2 chartjs-render-monitor" width="864" height="432" style="display: block; height: 216px; width: 432px;"></canvas>
-                    </div>
-                </div>
-                <div class="block-content bg-white">
-                    <div class="row items-push">
-                        <div class="col-6 col-sm-4 text-center text-sm-left">
-                            <div class="font-size-sm font-w600 text-uppercase text-muted">This Month</div>
-                            <div class="font-size-h4 font-w600">$ 6,540</div>
-                            <div class="font-w600 text-success">
-                                <i class="fa fa-caret-up"></i> +4%
-                            </div>
-                        </div>
-                        <div class="col-6 col-sm-4 text-center text-sm-left">
-                            <div class="font-size-sm font-w600 text-uppercase text-muted">This Week</div>
-                            <div class="font-size-h4 font-w600">$ 1,525</div>
-                            <div class="font-w600 text-danger">
-                                <i class="fa fa-caret-down"></i> -7%
-                            </div>
-                        </div>
-                        <div class="col-12 col-sm-4 text-center text-sm-left">
-                            <div class="font-size-sm font-w600 text-uppercase text-muted">Balance</div>
-                            <div class="font-size-h4 font-w600">$ 9,352</div>
-                            <div class="font-w600 text-success">
-                                <i class="fa fa-caret-up"></i> +35%
-                            </div>
-                        </div>
-                    </div>
+                <div class="block-content">
+                        <div id="chartdiv-groups" class="amcharts"></div>
                 </div>
             </div>
+           
         </div>
-        <!-- END Row #2 -->
     </div>
-    <div class="row js-appear-enabled animated fadeIn" data-toggle="appear">
-        <!-- Row #3 -->
-        <div class="col-md-4">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="py-20 text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-envelope-open fa-4x text-primary"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">9.25k Subscribers</div>
-                        <div class="text-muted">Your main list is growing!</div>
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-primary" href="javascript:void(0)">
-                                <i class="fa fa-cog mr-5"></i> Manage list
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="py-20 text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-twitter fa-4x text-info"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">+36 followers</div>
-                        <div class="text-muted">You are doing great!</div>
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-info" href="javascript:void(0)">
-                                <i class="fa fa-users mr-5"></i> Check them out
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="block">
-                <div class="block-content block-content-full">
-                    <div class="py-20 text-center">
-                        <div class="mb-20">
-                            <i class="fa fa-check fa-4x text-success"></i>
-                        </div>
-                        <div class="font-size-h4 font-w600">Business Plan</div>
-                        <div class="text-muted">This is your current active plan</div>
-                        <div class="pt-20">
-                            <a class="btn btn-rounded btn-alt-success" href="javascript:void(0)">
-                                <i class="fa fa-arrow-up mr-5"></i> Upgrade to VIP
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- END Row #3 -->
-    </div>
-    <div class="row invisible js-appear-enabled" data-toggle="appear">
-        <!-- Row #4 -->
-        <div class="col-md-6">
-            <a class="block block-link-shadow overflow-hidden" href="javascript:void(0)">
-                <div class="block-content block-content-full">
-                    <i class="si si-briefcase fa-2x text-body-bg-dark"></i>
-                    <div class="row py-20">
-                        <div class="col-6 text-right border-r">
-                            <div class="invisible js-appear-enabled" data-toggle="appear" data-class="animated fadeInLeft">
-                                <div class="font-size-h3 font-w600">16</div>
-                                <div class="font-size-sm font-w600 text-uppercase text-muted">Projects</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="invisible js-appear-enabled" data-toggle="appear" data-class="animated fadeInRight">
-                                <div class="font-size-h3 font-w600">2</div>
-                                <div class="font-size-sm font-w600 text-uppercase text-muted">Active</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-md-6">
-            <a class="block block-link-shadow overflow-hidden" href="javascript:void(0)">
-                <div class="block-content block-content-full">
-                    <div class="text-right">
-                        <i class="si si-users fa-2x text-body-bg-dark"></i>
-                    </div>
-                    <div class="row py-20">
-                        <div class="col-6 text-right border-r">
-                            <div class="invisible js-appear-enabled" data-toggle="appear" data-class="animated fadeInLeft">
-                                <div class="font-size-h3 font-w600 text-info">63250</div>
-                                <div class="font-size-sm font-w600 text-uppercase text-muted">Accounts</div>
-                            </div>
-                        </div>
-                        <div class="col-6">
-                            <div class="invisible js-appear-enabled" data-toggle="appear" data-class="animated fadeInRight">
-                                <div class="font-size-h3 font-w600 text-success">97%</div>
-                                <div class="font-size-sm font-w600 text-uppercase text-muted">Active</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <!-- END Row #4 -->
-    </div>
-    <div class="row invisible js-appear-enabled" data-toggle="appear">
-        <!-- Row #5 -->
-        <div class="col-6 col-md-4 col-xl-2">
-            <a class="block block-link-shadow text-center" href="be_pages_generic_inbox.html">
-                <div class="block-content ribbon ribbon-bookmark ribbon-success ribbon-left">
-                    <div class="ribbon-box">15</div>
-                    <p class="mt-5">
-                        <i class="si si-envelope-letter fa-3x"></i>
-                    </p>
-                    <p class="font-w600">Inbox</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4 col-xl-2">
-            <a class="block block-link-shadow text-center" href="be_pages_generic_profile.html">
-                <div class="block-content">
-                    <p class="mt-5">
-                        <i class="si si-user fa-3x"></i>
-                    </p>
-                    <p class="font-w600">Profile</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4 col-xl-2">
-            <a class="block block-link-shadow text-center" href="be_pages_forum_categories.html">
-                <div class="block-content ribbon ribbon-bookmark ribbon-primary ribbon-left">
-                    <div class="ribbon-box">3</div>
-                    <p class="mt-5">
-                        <i class="si si-bubbles fa-3x"></i>
-                    </p>
-                    <p class="font-w600">Forum</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4 col-xl-2">
-            <a class="block block-link-shadow text-center" href="be_pages_generic_search.html">
-                <div class="block-content">
-                    <p class="mt-5">
-                        <i class="si si-magnifier fa-3x"></i>
-                    </p>
-                    <p class="font-w600">Search</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4 col-xl-2">
-            <a class="block block-link-shadow text-center" href="be_comp_charts.html">
-                <div class="block-content">
-                    <p class="mt-5">
-                        <i class="si si-bar-chart fa-3x"></i>
-                    </p>
-                    <p class="font-w600">Live Stats</p>
-                </div>
-            </a>
-        </div>
-        <div class="col-6 col-md-4 col-xl-2">
-            <a class="block block-link-shadow text-center" href="javascript:void(0)">
-                <div class="block-content">
-                    <p class="mt-5">
-                        <i class="si si-settings fa-3x"></i>
-                    </p>
-                    <p class="font-w600">Settings</p>
-                </div>
-            </a>
-        </div>
-        <!-- END Row #5 -->
-    </div>
+  
+@endsection
+
+@section('footer_scripts')
+<!-- Resources -->
+<script src="https://www.amcharts.com/lib/4/core.js"></script>
+<script src="https://www.amcharts.com/lib/4/charts.js"></script>
+<script src="https://www.amcharts.com/lib/4/themes/animated.js"></script>
+<script>
+// Themes begin
+am4core.useTheme(am4themes_animated);
+// Themes end
+
+/**
+    Create chart instance for users
+*/ 
+var chart = am4core.create("chartdiv-users", am4charts.XYChart);
+
+// Export
+chart.exporting.menu = new am4core.ExportMenu();
+
+// Data for both series
+var data = {!! $data_users !!};
+
+/* Create axes */
+var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis.dataFields.category = "name";
+categoryAxis.renderer.grid.template.location = 0;
+categoryAxis.renderer.minGridDistance = 20;
+categoryAxis.renderer.labels.template.horizontalCenter = "right";
+categoryAxis.renderer.labels.template.verticalCenter = "middle";
+categoryAxis.renderer.labels.template.rotation = -45;
+categoryAxis.tooltip.disabled = true;
+categoryAxis.renderer.minHeight = 30;
+
+/* Create value axis */
+var valueAxis = chart.yAxes.push(new am4charts.ValueAxis());
+valueAxis.min = 0;
+valueAxis.max = 100;
+valueAxis.title.text = "% of completion";
+
+/* Create series */
+var series = chart.series.push(new am4charts.ColumnSeries());
+series.name = "Completion";
+series.dataFields.valueY = "completion_percentage";
+series.dataFields.categoryX = "name";
+
+series.columns.template.tooltipText = "[#fff font-size: 15px]{categoryX}\n [/][#fff font-size: 20px]{valueY} %[/]"
+series.columns.template.propertyFields.fillOpacity = "fillOpacity";
+series.columns.template.propertyFields.stroke = "stroke";
+series.columns.template.propertyFields.strokeWidth = "strokeWidth";
+series.columns.template.propertyFields.strokeDasharray = "columnDash";
+series.tooltip.label.textAlign = "middle";
+
+// Draw the average line
+var goal = valueAxis.axisRanges.create();
+goal.value = {!! config('app.completion_goal') !!};
+goal.grid.stroke = am4core.color("#2ADD87");
+goal.grid.strokeWidth = 2;
+goal.grid.strokeOpacity = 1;
+
+goal.label.inside = true;
+goal.label.text = "Goal";
+goal.label.fill = goal.grid.stroke;
+goal.label.verticalCenter = "bottom";
+
+var average = valueAxis.axisRanges.create();
+average.value = {!! $average_completion_users !!};
+average.grid.stroke = am4core.color("#4E5257");
+average.grid.strokeWidth = 2;
+average.grid.strokeOpacity = 1;
+average.grid.strokeDasharray = "2";
+average.label.inside = true;
+average.label.text = "Average ("+average.value+"%)";
+average.label.fill = average.grid.stroke;
+average.label.verticalCenter = "bottom";
+
+chart.data = data;
+
+/**
+    Create chart instance for groups
+*/ 
+var chart_groups = am4core.create("chartdiv-groups", am4charts.XYChart);
+
+// Export
+chart_groups.exporting.menu = new am4core.ExportMenu();
+
+// Data for both series
+var data = {!! $data_groups !!};
+
+/* Create axes */
+var categoryAxis_groups = chart_groups.xAxes.push(new am4charts.CategoryAxis());
+categoryAxis_groups.dataFields.category = "name";
+categoryAxis_groups.renderer.grid.template.location = 0;
+categoryAxis_groups.renderer.minGridDistance = 20;
+categoryAxis_groups.renderer.labels.template.horizontalCenter = "right";
+categoryAxis_groups.renderer.labels.template.verticalCenter = "middle";
+categoryAxis_groups.renderer.labels.template.rotation = -45;
+categoryAxis_groups.tooltip.disabled = true;
+categoryAxis_groups.renderer.minHeight = 0;
+
+/* Create value axis */
+var valueAxis_groups = chart_groups.yAxes.push(new am4charts.ValueAxis());
+valueAxis_groups.min = 0;
+valueAxis_groups.max = 100;
+valueAxis_groups.title.text = "% of completion";
+
+/* Create series */
+var series_groups = chart_groups.series.push(new am4charts.ColumnSeries());
+series_groups.name = "Completion";
+series_groups.dataFields.valueY = "completion_percentage";
+series_groups.dataFields.categoryX = "name";
+
+series_groups.columns.template.tooltipText = "[#fff font-size: 15px]{categoryX}\n [/][#fff font-size: 20px]{valueY} %[/]"
+series_groups.columns.template.propertyFields.fillOpacity = "fillOpacity";
+series_groups.columns.template.propertyFields.stroke = "stroke";
+series_groups.columns.template.propertyFields.strokeWidth = "strokeWidth";
+series_groups.columns.template.propertyFields.strokeDasharray = "columnDash";
+series_groups.tooltip.label.textAlign = "middle";
+
+// Draw the average line
+var goal_groups = valueAxis_groups.axisRanges.create();
+goal_groups.value = {!! config('app.completion_goal') !!};
+goal_groups.grid.stroke = am4core.color("#2ADD87");
+goal_groups.grid.strokeWidth = 2;
+goal_groups.grid.strokeOpacity = 1;
+
+goal_groups.label.inside = true;
+goal_groups.label.text = "Goal";
+goal_groups.label.fill = goal_groups.grid.stroke;
+goal_groups.label.verticalCenter = "bottom";
+
+var average_groups = valueAxis_groups.axisRanges.create();
+average_groups.value = {!! $average_completion_groups !!};
+average_groups.grid.stroke = am4core.color("#4E5257");
+average_groups.grid.strokeWidth = 2;
+average_groups.grid.strokeOpacity = 1;
+average_groups.grid.strokeDasharray = "2";
+average_groups.label.inside = true;
+average_groups.label.text = "Average ("+average_groups.value+"%)";
+average_groups.label.fill = average_groups.grid.stroke;
+average_groups.label.verticalCenter = "bottom";
+
+chart_groups.data = data;
+
+</script>
+@endsection
+
+@section('header_css')
+<style>
+        .amcharts {
+          width: 100%;
+          height: 500px;
+        }
+</style>
 @endsection

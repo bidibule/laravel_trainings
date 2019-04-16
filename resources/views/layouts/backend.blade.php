@@ -26,11 +26,12 @@
         <!-- END Icons -->
 
         <!-- Stylesheets -->
-
-
         <!-- Fonts and Codebase framework -->
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
         <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css')}}">
+
+        <!-- Custom CSS -->
+        @yield('header_css')
 
         <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
         <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
