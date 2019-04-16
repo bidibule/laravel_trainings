@@ -11,8 +11,7 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
-
+Route::get('/', 'DashboardController@index')->name('home');
 
 Route::resource('users', 'UsersController');
 Route::resource('groups', 'GroupsController');

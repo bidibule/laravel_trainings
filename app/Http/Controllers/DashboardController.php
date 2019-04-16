@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User
+use App\User;
+use App\Training;
+use App\Group;
 
 class DashboardController extends Controller
 {
