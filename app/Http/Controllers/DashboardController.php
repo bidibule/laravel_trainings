@@ -26,6 +26,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
+        
+        $groups = Group::wit()
+        
         return view('dashboard');
     }
 }

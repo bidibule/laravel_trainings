@@ -33,11 +33,6 @@
           </td>
         <td class="text-center">
           <div class="btn-group">
-            <a href="{{ route('trainings.edit',['id' => $training->id ]) }}">
-                <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('Edit') }}">
-                  <i class="fa fa-pencil"></i>
-                </button>
-              </a>
             <a href="{{ route('trainings.show',['id' => $training->id ]) }}">
                 <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
                   <i class="fa fa-eye"></i>

@@ -38,11 +38,11 @@ class User extends Authenticatable
     ];
 
     public function groups(){
-        return $this->belongsToMany(Group::class)->orderBy('name','ASC');
+        return $this->belongsToMany(Group::class)->withTimestamps()->orderBy('name','ASC');
     }
 
     public function trainings(){
-        return $this->belongsToMany(Training::class)->withPivot('status','completion_date')->orderBy('name','ASC');
+        return $this->belongsToMany(Training::class)->withTimestamps()->withPivot('status','completion_date')->orderBy('name','ASC');
     }
 
     public function syncTrainingsByGroups($groups_ids){

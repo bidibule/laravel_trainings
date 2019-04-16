@@ -1,4 +1,5 @@
-@extends('layouts.backend') 
+@extends('layouts.backend')
+@section('title','Group: '.$group->name) 
 @section('content')
 <div class="container">
   <!-- Preview -->

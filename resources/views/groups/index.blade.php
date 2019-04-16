@@ -22,7 +22,7 @@
     @foreach($groups as $group)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td><a href="{{ route('groups.edit',['id' => $group->id]) }}"">{{ $group->name }}</a></td>
+        <td>{{ $group->name }}</td>
         <td>
             <div class="btn-group">
                 <a href="{{ route('groups.show',['id' => $group->id ]) }}">

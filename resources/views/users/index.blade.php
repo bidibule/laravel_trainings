@@ -16,6 +16,7 @@
           <th scope="col">#</th>
           <th scope="col">Name</th>
           <th scope="col">Email</th>
+          <th scope="col">% Completion</th>
           <th scope="col">Created on</th>
           <th class="text-center">Action</th>
         </tr>
@@ -26,6 +27,8 @@
           <th scope="row">{{ $loop->iteration }}</th>
           <td>{{ $user->name }}</td>
           <td>{{ $user->email }}</td>
+          <td>{{ ($user->trainings->count() >0) ? round((($user->trainings()->wherePivot('status', 1)->count() / $user->trainings->count())*100),2).'%' : '-' }}</td>
+        </td>
           <td>{{ $user->created_at }}</td>
           <td class="text-center">
             <div class="btn-group">

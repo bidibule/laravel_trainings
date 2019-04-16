@@ -23,11 +23,11 @@ class Training extends Model
     ];
 
     public function users(){
-        return $this->belongsToMany(User::class)->withPivot('status','completion_date')->orderBy('name','ASC');
+        return $this->belongsToMany(User::class)->withTimestamps()->withPivot('status','completion_date')->orderBy('name','ASC');
     }
 
     public function groups(){
-        return $this->belongsToMany(Group::class)->orderBy('name','ASC');
+        return $this->belongsToMany(Group::class)->withTimestamps()->orderBy('name','ASC');
     }
 
     //Format effective date for input/ouput

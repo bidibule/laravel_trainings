@@ -45,7 +45,7 @@ class UserTrainingController extends Controller
         $completion_date = request()->has('completed') ? date('Y-m-d') : null;
         $training->users()->updateExistingPivot($user->id,['status' => request()->has('completed') ,'completion_date' => $completion_date]);
  
-        return back();
+        return redirect()->route('users.show',['id' => $user->id]);
 
     }
 }

@@ -22,11 +22,11 @@ class Group extends Model
     }
 
     public function users(){
-        return $this->belongsToMany(User::class)->orderBy('name','asc');
+        return $this->belongsToMany(User::class)->withTimestamps()->orderBy('name','asc');
     }
 
     public function trainings(){
-        return $this->belongsToMany(Training::class)->orderBy('name','asc');
+        return $this->belongsToMany(Training::class)->withTimestamps()->orderBy('name','asc');
     }
 
     public function syncUserAndTrainings($id){
