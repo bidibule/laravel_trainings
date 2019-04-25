@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\User;
+use App\Training;
 
 class TrainingsController extends Controller
 {
@@ -22,10 +23,12 @@ class TrainingsController extends Controller
      */
     public function index()
     {
-        $trainings = User::findOrFail(auth()->id())->trainings()->orderBy('training_user.status','DESC')->get();
+        $trainings = User::findOrFail(auth()->id())->trainings()->get();
 
+        $trainings_incompleted = $trainings->where('pivot.status',0);
+        $trainings_completed = $trainings->where('pivot.status',1);
 
-        return view('member.trainings.index', compact('trainings'));
+        return view('member.trainings.index', compact('trainings_incompleted','trainings_completed'));
     }
 
      /**
@@ -35,8 +38,21 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){  
-        $training = Training::find($id);
-
+        
+        $training = User::findOrFail(auth()->id())->trainings()->where('id',$id)->first(); 
         return view('member.trainings.show',compact('training'));
+    
+    }
+
+    public function updateTrainingStatus($id){
+
+        $training = User::findOrFail(auth()->id())->trainings()->where('id',$id)->first();
+
+        $completion_date = request()->has('completed') ? date('Y-m-d') : null;
+        $training->users()->updateExistingPivot(auth()->id(),['status' => request()->has('completed') ,'completion_date' => $completion_date]);
+        
+        session()->flash('message', 'Training is now completed');
+        return redirect()->route('member.trainings.show',['id' => $training->id]);
+
     }
 }

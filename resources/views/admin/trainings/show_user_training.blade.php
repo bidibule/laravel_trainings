@@ -12,7 +12,7 @@
           </div>
           <div class="block-content">
             <div class="form-group">
-                <form METHOD="POST" id="update_training" action={{ route( 'trainings.update_status',[ 'user_id'=> $training->pivot->user_id, 'training_id' => $training->pivot->training_id])}}> @csrf @method('PATCH')
+                <form METHOD="POST" id="update_training" action="{{ route( 'trainings.update_status',[ 'user_id'=> $training->pivot->user_id, 'training_id' => $training->pivot->training_id])}}"> @csrf @method('PATCH')
                 <label class="css-control css-control-success css-switch">
                     <input type="checkbox" class="css-control-input" name="completed" id="completed" onclick="this.form.submit()" {{ ($training->pivot->status)
                       ? 'checked' : '' }}>

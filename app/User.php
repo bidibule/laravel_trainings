@@ -42,7 +42,7 @@ class User extends Authenticatable
     }
 
     public function trainings(){
-        return $this->belongsToMany(Training::class)->withTimestamps()->withPivot('status','completion_date')->orderBy('name','ASC');
+        return $this->belongsToMany(Training::class)->withTimestamps()->withPivot('status','completion_date');
     }
 
     public function syncTrainingsByGroups($groups_ids){

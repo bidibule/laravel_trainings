@@ -26,7 +26,7 @@ class Training extends Model
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot('status','completion_date')->orderBy('name','ASC');
     }
 
-    public function groups(){
+     public function groups(){
         return $this->belongsToMany(Group::class)->withTimestamps()->orderBy('name','ASC');
     }
 

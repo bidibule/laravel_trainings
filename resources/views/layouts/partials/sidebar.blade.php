@@ -1,7 +1,7 @@
 
 <div class="content-side content-side-full">
     <ul class="nav-main">
-        <li class="nav-main-heading"><span class="sidebar-mini-hidden">My trainings</span></li>
+        <li class="nav-main-heading">  <a href="{{ route('member.trainings.index') }}"><span class="sidebar-mini-hidden">My trainings</span></a></li>
     @can('accessAdminpanel')
         <li class="nav-main-heading"><span class="sidebar-mini-hidden">Admin</span></li>
         <li>

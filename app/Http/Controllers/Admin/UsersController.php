@@ -70,7 +70,10 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::where('id',$id)->with('trainings')->first();
+        $user = User::findOrFail($id)->with('trainings')->first();
+
+        $user->trainings_incompleted = $user->trainings->where('pivot.status',0);
+        $user->trainings_completed = $user->trainings->where('pivot.status',1);
       
         return view('admin.users.show',compact('user'));
     }

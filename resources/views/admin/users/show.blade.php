@@ -57,10 +57,19 @@
   <div class="row">
     <div class="col-12">
       <div class="block block-bordered">
-        <div class="block-content">
-
+          <ul class="nav nav-tabs nav-tabs-alt justify-content-end" data-toggle="tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" href="#tab-incomplete">Incomplete ({{ count($user->trainings_incompleted) }})</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#tab-complete">Complete ({{ count($user->trainings_completed) }})</a>
+              </li>
+            </ul>
+        <div class="block-content tab-content">
+          
           <h3>Trainings ({{ $user->trainings->count() }})</h3>
-          <!-- Trainings -->
+          <div class="tab-pane fade show active" id="tab-incomplete" role="tabpanel">
+          <!-- Trainings Incomplete -->
           <table class="table table-striped table-sm">
             <thead>
               <tr class="thead-light">
@@ -71,16 +80,40 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($user->trainings as $training)
+              @foreach($user->trainings_incompleted as $training)
               <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
                 <td><a href="{{ route('admin.trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
-                <td class="text-center {{ ($training->pivot->status == 0 ) ? 'bg-warning' : 'bg-success' }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</td>
+                <td class="text-center"><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></td>
                 <td class="text-center">{{ \Carbon\Carbon::parse($training->pivot->completion_date)->format('d-m-Y') }}</td>
               </tr>
               @endforeach
             </tbody>
           </table>
+          </div>
+          <div class="tab-pane fade show" id="tab-complete" role="tabpanel">
+             <!-- Trainings Incomplete -->
+          <table class="table table-striped table-sm">
+              <thead>
+                <tr class="thead-light">
+                  <th scope="col">#</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Status</th>
+                  <th scope="col">Completion Date</th>
+                </tr>
+              </thead>
+              <tbody>
+                @foreach($user->trainings_completed as $training)
+                <tr>
+                  <th scope="row">{{ $loop->iteration }}</th>
+                  <td><a href="{{ route('admin.trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
+                  <td class="text-center"><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></td>
+                  <td class="text-center">{{ \Carbon\Carbon::parse($training->pivot->completion_date)->format('d-m-Y') }}</td>
+                </tr>
+                @endforeach
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
