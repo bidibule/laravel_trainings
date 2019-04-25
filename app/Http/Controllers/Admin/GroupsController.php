@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -9,6 +10,17 @@ use App\Training;
 
 class GroupsController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -18,7 +30,7 @@ class GroupsController extends Controller
     {
         $groups = Group::with('users')->orderBy('name','ASC')->get();
 
-        return view('groups.index', compact('groups'));
+        return view('admin.groups.index', compact('groups'));
     }
 
     /**
@@ -28,7 +40,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('groups.create');
+        return view('admin.groups.create');
     }
 
     /**
@@ -46,7 +58,7 @@ class GroupsController extends Controller
 
         $new_group = Group::create($attributes);
 
-        return redirect()->route('groups.edit',['id'=> $new_group->id]);
+        return redirect()->route('admin.admin.groups.edit',['id'=> $new_group->id]);
     }
 
     /**
@@ -58,7 +70,7 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = Group::with('users', 'trainings')->findOrFail($id);
-        return  view('groups.show', compact('group'));
+        return  view('admin.groups.show', compact('group'));
     }
 
     /**
@@ -73,7 +85,7 @@ class GroupsController extends Controller
         $users = User::orderBy('name','ASC')->get();
         $trainings = Training::orderBy('name', 'ASC')->get();
 
-        return view('groups.edit',compact('group','users', 'trainings'));
+        return view('admin.groups.edit',compact('group','users', 'trainings'));
     }
 
     /**
@@ -92,7 +104,7 @@ class GroupsController extends Controller
         $group = Group::findOrFail($id);
         $group->update($attributes);
 
-        return redirect()->route('groups.index');
+        return redirect()->route('admin.admin.groups.index');
     }
 
     /**

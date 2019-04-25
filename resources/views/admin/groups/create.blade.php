@@ -1,7 +1,7 @@
 @extends('layouts.backend')
 @section('content')
 
-<form method="POST" action="{{ route('groups.store') }}">
+<form method="POST" action="{{ route('admin.groups.store') }}">
     @csrf
     <div class="form-group">
         <label for="exampleInputEmail1">Name</label>

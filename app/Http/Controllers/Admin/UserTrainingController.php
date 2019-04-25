@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\Training;
@@ -8,7 +9,18 @@ use App\User;
 
 class UserTrainingController extends Controller
 {
+    
      /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    /**
      * Show the specific training for this user
      *
      * @param  User  $user
@@ -19,7 +31,7 @@ class UserTrainingController extends Controller
         
         $training = $user->trainings->find($training_id);
 
-        return view('trainings.show_user_training',compact('training'));
+        return view('admin.trainings.show_user_training',compact('training'));
 
     }
 
@@ -27,7 +39,7 @@ class UserTrainingController extends Controller
         
         $training = $training_id->users()->get();
 
-        return view('trainings.show_training_and_users',compact('training'));
+        return view('admin.trainings.show_training_and_users',compact('training'));
 
     }
 
@@ -45,7 +57,7 @@ class UserTrainingController extends Controller
         $completion_date = request()->has('completed') ? date('Y-m-d') : null;
         $training->users()->updateExistingPivot($user->id,['status' => request()->has('completed') ,'completion_date' => $completion_date]);
  
-        return redirect()->route('users.show',['id' => $user->id]);
+        return redirect()->route('admin.users.show',['id' => $user->id]);
 
     }
 }

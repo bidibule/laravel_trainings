@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
@@ -13,6 +14,19 @@ use App\Group;
 
 class TrainingsController extends Controller
 {
+    
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
+    
+    
     /**
      * Display a listing of the resource.
      *
@@ -23,7 +37,7 @@ class TrainingsController extends Controller
         $trainings = Training::orderBy('name','ASC')->get();
         
 
-        return view('trainings.index', compact('trainings'));
+        return view('admin.trainings.index', compact('trainings'));
     }
 
     /**
@@ -32,7 +46,7 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('trainings.create');
+        return view('admin.trainings.create');
     }
 
     /**
@@ -60,7 +74,7 @@ class TrainingsController extends Controller
 
         Training::create($attributes);
 
-        return redirect()->route('trainings.index');
+        return redirect()->route('admin.admin.trainings.index');
     }
 
     /**
@@ -75,7 +89,7 @@ class TrainingsController extends Controller
         //Checking percentage
         $training->total_completion_percentage = ($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100;
       
-        return view('trainings.show',compact('training'));
+        return view('admin.trainings.show',compact('training'));
     }
 
     /**
@@ -89,7 +103,7 @@ class TrainingsController extends Controller
         $users = User::all();
         $groups = Group::all();
 
-        return view('trainings.edit',compact('training','users','groups'));
+        return view('admin.trainings.edit',compact('training','users','groups'));
     }
 
     /**
@@ -123,7 +137,7 @@ class TrainingsController extends Controller
         
         $training->update($attributes);
 
-        return redirect()->route('trainings.show',['id' => $training->id]);
+        return redirect()->route('admin.admin.trainings.show',['id' => $training->id]);
     }
 
     /**

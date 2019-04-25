@@ -1,6 +1,7 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use App\User;
@@ -62,7 +63,7 @@ class DashboardController extends Controller
 
         $average_groups = round(($average_group / $g), 2);
 
-        return view('dashboard', [
+        return view('admin.dashboard', [
             'data_users' => json_encode($data_users),
             'average_completion_users' => $average_users,
             'data_groups' => json_encode($data_groups),

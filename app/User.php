@@ -58,14 +58,21 @@ class User extends Authenticatable
     }
 
     /**
-     * Return the Compliance percentage for the tranings
+     * Return the Compliance percentage for the trainings
      */
     public function getCompliance(){
 
         $total_trainings = $this->trainings()->count();
         $completed_trainings = $this->trainings()->wherePivot('status', 1)->count();
 
-        return ($total_trainings <= 0)  ? "0" : round(($completed_trainings/$total_trainings)*100,2);
+        return ($total_trainings <= 0)  ? 0 : round(($completed_trainings/$total_trainings)*100,2);
+    }
+
+    
+
+    public function role($role) {
+        $role = (array)$role;
+        return in_array($this->role, $role);
     }
 
    

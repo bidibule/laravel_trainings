@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 
+use Illuminate\Support\Facades\Auth;
+
 class LoginController extends Controller
 {
     /*
@@ -20,12 +22,7 @@ class LoginController extends Controller
 
     use AuthenticatesUsers;
 
-    /**
-     * Where to redirect users after login.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/home';
+   
 
     /**
      * Create a new controller instance.
@@ -39,5 +36,28 @@ class LoginController extends Controller
 
     public function showLoginForm(){
         return view('auth.login');
+    }
+
+    public function redirectTo(){
+        
+        // User role
+        $role = Auth::user()->role; 
+        
+        // Check user role
+        switch ($role) {
+            case 'admin':
+                    return '/admin/dashboard';
+                break;
+            case 'member':
+                    return '/member/dashboard';
+                break; 
+            default:
+                    return '/login'; 
+            break;
+        }
+    }
+
+    public function logout(){
+        return redirect('login')->with(Auth::logout());
     }
 }

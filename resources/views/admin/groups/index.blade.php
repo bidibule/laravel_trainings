@@ -6,7 +6,7 @@
     <div class="block-header block-header-default">
         <h3 class="block-title">&nbsp;</h3>
         <div class="block-options">
-          <a href="{{  route('groups.create') }}"><button type="button" class="btn btn-sm btn-secondary">Add group</button></a>
+          <a href="{{  route('admin.groups.create') }}"><button type="button" class="btn btn-sm btn-secondary">Add group</button></a>
         </div>
       </div>
       <div class="block-content">
@@ -25,7 +25,7 @@
         <td>{{ $group->name }}</td>
         <td>
             <div class="btn-group">
-                <a href="{{ route('groups.show',['id' => $group->id ]) }}">
+                <a href="{{ route('admin.groups.show',['id' => $group->id ]) }}">
                   <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
                         <i class="fa fa-eye"></i>
                 </button>

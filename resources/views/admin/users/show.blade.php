@@ -7,7 +7,7 @@
         <div class="block-header block-header-default">
           <h3 class="block-title">Profile</h3>
           <div class="block-options">
-            <a href="{{ route('users.edit',['id' => $user->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
+            <a href="{{ route('admin.users.edit',['id' => $user->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
           </div>
         </div>
         <div class="block-content block-content-full clearfix">
@@ -42,7 +42,7 @@
         <div class="block-header block-header-default">
           <h3 class="block-title">Groups</h3>
           <div class="block-options">
-              <a href="{{ route('users.editGroups',['id' => $user->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
+              <a href="{{ route('admin.users.editGroups',['id' => $user->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
           </div>
         </div>
         <div class="block-content">
@@ -74,7 +74,7 @@
               @foreach($user->trainings as $training)
               <tr>
                 <th scope="row">{{ $loop->iteration }}</th>
-                <td><a href="{{ route('trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
+                <td><a href="{{ route('admin.trainings.user_training',['user' => $user->id,'training' => $training->id]) }}">{{ $training->name }}</a></td>
                 <td class="text-center {{ ($training->pivot->status == 0 ) ? 'bg-warning' : 'bg-success' }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</td>
                 <td class="text-center">{{ \Carbon\Carbon::parse($training->pivot->completion_date)->format('d-m-Y') }}</td>
               </tr>

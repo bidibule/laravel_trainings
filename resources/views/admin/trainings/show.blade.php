@@ -6,7 +6,7 @@
       <div class="block-header block-header-default">
         <h3 class="block-title">{{ $training->name }}</h3>
         <div class="block-options">
-          <a href="{{ route('trainings.edit',['id' => $training->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
+          <a href="{{ route('admin.trainings.edit',['id' => $training->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
         </div>
       </div>
       <div class="block-content block-content-full clearfix">
@@ -45,7 +45,7 @@
       <div class="block-header block-header-default">
         <h3 class="block-title">Groups</h3>
         <div class="block-options">
-          <a href="{{ route('trainings.editGroups',['id' => $training->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
+          <a href="{{ route('admin.trainings.editGroups',['id' => $training->id]) }}"><button type="button" class="btn btn-sm btn-secondary">Edit</button></a>
         </div>
       </div>
       <div class="block-content">

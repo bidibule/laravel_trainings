@@ -15044,18 +15044,18 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var ViewRegistry_1 = __webpack_require__(24);
 var BasicView_1 = __webpack_require__(67);
 var MonthView_1 = __webpack_require__(246);
-ViewRegistry_1.defineView('basic', {
+ViewRegistry_1.defineview('admin.basic', {
     'class': BasicView_1.default
 });
-ViewRegistry_1.defineView('basicDay', {
+ViewRegistry_1.defineview('admin.basicDay', {
     type: 'basic',
     duration: { days: 1 }
 });
-ViewRegistry_1.defineView('basicWeek', {
+ViewRegistry_1.defineview('admin.basicWeek', {
     type: 'basic',
     duration: { weeks: 1 }
 });
-ViewRegistry_1.defineView('month', {
+ViewRegistry_1.defineview('admin.month', {
     'class': MonthView_1.default,
     duration: { months: 1 },
     defaults: {
@@ -15071,7 +15071,7 @@ ViewRegistry_1.defineView('month', {
 Object.defineProperty(exports, "__esModule", { value: true });
 var ViewRegistry_1 = __webpack_require__(24);
 var AgendaView_1 = __webpack_require__(238);
-ViewRegistry_1.defineView('agenda', {
+ViewRegistry_1.defineview('admin.agenda', {
     'class': AgendaView_1.default,
     defaults: {
         allDaySlot: true,
@@ -15079,11 +15079,11 @@ ViewRegistry_1.defineView('agenda', {
         slotEventOverlap: true // a bad name. confused with overlap/constraint system
     }
 });
-ViewRegistry_1.defineView('agendaDay', {
+ViewRegistry_1.defineview('admin.agendaDay', {
     type: 'agenda',
     duration: { days: 1 }
 });
-ViewRegistry_1.defineView('agendaWeek', {
+ViewRegistry_1.defineview('admin.agendaWeek', {
     type: 'agenda',
     duration: { weeks: 1 }
 });
@@ -15096,7 +15096,7 @@ ViewRegistry_1.defineView('agendaWeek', {
 Object.defineProperty(exports, "__esModule", { value: true });
 var ViewRegistry_1 = __webpack_require__(24);
 var ListView_1 = __webpack_require__(248);
-ViewRegistry_1.defineView('list', {
+ViewRegistry_1.defineview('admin.list', {
     'class': ListView_1.default,
     buttonTextKey: 'list',
     defaults: {
@@ -15105,14 +15105,14 @@ ViewRegistry_1.defineView('list', {
         noEventsMessage: 'No events to display'
     }
 });
-ViewRegistry_1.defineView('listDay', {
+ViewRegistry_1.defineview('admin.listDay', {
     type: 'list',
     duration: { days: 1 },
     defaults: {
         listDayFormat: 'dddd' // day-of-week is all we need. full date is probably in header
     }
 });
-ViewRegistry_1.defineView('listWeek', {
+ViewRegistry_1.defineview('admin.listWeek', {
     type: 'list',
     duration: { weeks: 1 },
     defaults: {
@@ -15120,14 +15120,14 @@ ViewRegistry_1.defineView('listWeek', {
         listDayAltFormat: 'LL'
     }
 });
-ViewRegistry_1.defineView('listMonth', {
+ViewRegistry_1.defineview('admin.listMonth', {
     type: 'list',
     duration: { month: 1 },
     defaults: {
         listDayAltFormat: 'dddd' // day-of-week is nice-to-have
     }
 });
-ViewRegistry_1.defineView('listYear', {
+ViewRegistry_1.defineview('admin.listYear', {
     type: 'list',
     duration: { year: 1 },
     defaults: {

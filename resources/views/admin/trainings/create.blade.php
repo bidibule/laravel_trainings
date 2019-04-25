@@ -2,7 +2,7 @@
 @section('content')
 <div class="block block-bordered">
     <div class="block-content">
-        <form method="POST" action="{{ route('trainings.store') }}" enctype="multipart/form-data">
+        <form method="POST" action="{{ route('admin.trainings.store') }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="name">Name</label>

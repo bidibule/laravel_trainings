@@ -1,6 +1,7 @@
 <?php
+namespace App\Http\Controllers\Admin;
+use App\Http\Controllers\Controller;
 
-namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\Rule;
@@ -24,7 +25,7 @@ class UsersController extends Controller
     public function index()
     {
         $users = User::orderBy('name','ASC')->get();
-        return view('users.index', compact('users'));
+        return view('admin.users.index', compact('users'));
     }
 
     /**
@@ -35,7 +36,7 @@ class UsersController extends Controller
     public function create()
     {
         $groups = Group::all();
-        return view('users.create',compact('groups'));
+        return view('admin.users.create',compact('groups'));
     }
 
     /**
@@ -58,7 +59,7 @@ class UsersController extends Controller
         
         User::create($attributes);
 
-        return redirect()->route('users.index');
+        return redirect()->route('admin.users.index');
     }
 
     /**
@@ -71,7 +72,7 @@ class UsersController extends Controller
     {
         $user = User::where('id',$id)->with('trainings')->first();
       
-        return view('users.show',compact('user'));
+        return view('admin.users.show',compact('user'));
     }
 
     /**
@@ -86,7 +87,7 @@ class UsersController extends Controller
         $groups = Group::all();
         $trainings = Training::all();
 
-        return view('users.edit',compact('user','groups','trainings'));
+        return view('admin.users.edit',compact('user','groups','trainings'));
     }
 
     /**
@@ -114,7 +115,7 @@ class UsersController extends Controller
         $user = User::findOrFail($id);
         $user->update($attributes);
 
-        return redirect()->route('users.show',['id'=> $user->id]);
+        return redirect()->route('admin.users.show',['id'=> $user->id]);
     }
 
     /**

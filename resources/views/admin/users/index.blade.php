@@ -5,7 +5,7 @@
   <div class="block-header block-header-default">
     <h3 class="block-title">&nbsp;</h3>
     <div class="block-options">
-      <a href="{{  route('users.create') }}"><button type="button" class="btn btn-sm btn-secondary">Add user</button></a>
+      <a href="{{  route('admin.users.create') }}"><button type="button" class="btn btn-sm btn-secondary">Add user</button></a>
 
     </div>
   </div>
@@ -32,7 +32,7 @@
           <td>{{ $user->created_at }}</td>
           <td class="text-center">
             <div class="btn-group">
-              <a href="{{ route('users.show',['id' => $user->id ]) }}">
+              <a href="{{ route('admin.users.show',['id' => $user->id ]) }}">
                 <button type="button" class="btn btn-sm btn-secondary js-tooltip-enabled" data-toggle="tooltip" title="" data-original-title="{{ __('View') }}">
                       <i class="fa fa-eye"></i>
               </button>
