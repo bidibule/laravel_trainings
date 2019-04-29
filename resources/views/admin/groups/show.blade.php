@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.metronic')
 @section('title','Group: '.$group->name) 
 @section('content')
 <div class="container">

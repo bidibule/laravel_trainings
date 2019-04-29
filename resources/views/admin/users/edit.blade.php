@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.metronic')
 @section('title','Edit user - '.$user->name)
 @section('content')
 

@@ -53,8 +53,7 @@
     <!-- end:: Page -->
     @include('layouts.partials.metronic.layout-quick-panel')
     @include('layouts.partials.metronic.layout-scrolltop')
-    @include('layouts.partials.metronic.layout-toolbar')
-    @include('layouts.partials.metronic.layout-demo-panel')
+
 
     <!-- begin::Global Config(global config for global JS sciprts) -->
     <script>

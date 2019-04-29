@@ -1,4 +1,4 @@
-@extends('layouts.backend') 
+@extends('layouts.metronic') 
 @section('title',__('List of users ('.count($users).')')) 
 @section('content')
 <div class="block">

@@ -68,7 +68,7 @@
              <form class="kt-form" action="{{ route('login') }}" method="POST">
                 @csrf
                 <div class="input-group">
-                     <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" placeholder="Email" name="email" autocomplete="off" required>
+                     <input class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" type="text" value="{{ old('email') }}" placeholder="Email" name="email" autocomplete="off" required>
                      @if ($errors->has('email'))
                      <span class="invalid-feedback" role="alert">
                                                              <strong>{{ $errors->first('email') }}</strong>
@@ -97,39 +97,7 @@
                  </div>
              </form>
          </div>
-         <div class="kt-login__signup">
-             <div class="kt-login__head">
-                 <h3 class="kt-login__title">Sign Up</h3>
-                 <div class="kt-login__desc">Enter your details to create your account:</div>
-             </div>
-             <form class="kt-form" action="">
-                 <div class="input-group">
-                     <input class="form-control" type="text" placeholder="Fullname" name="fullname">
-                 </div>
-                 <div class="input-group">
-                     <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
-                 </div>
-                 <div class="input-group">
-                     <input class="form-control" type="password" placeholder="Password" name="password">
-                 </div>
-                 <div class="input-group">
-                     <input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
-                 </div>
-                 <div class="row kt-login__extra">
-                     <div class="col kt-align-left">
-                         <label class="kt-checkbox">
-                             <input type="checkbox" name="agree">I Agree the <a href="#" class="kt-link kt-login__link kt-font-bold">terms and conditions</a>.
-                             <span></span>
-                         </label>
-                         <span class="form-text text-muted"></span>
-                     </div>
-                 </div>
-                 <div class="kt-login__actions">
-                     <button id="kt_login_signup_submit" class="btn btn-brand btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
-                     <button id="kt_login_signup_cancel" class="btn btn-secondary btn-pill kt-login__btn-secondary">Cancel</button>
-                 </div>
-             </form>
-         </div>
+     
          <div class="kt-login__forgot">
              <div class="kt-login__head">
                  <h3 class="kt-login__title">Forgotten Password ?</h3>
@@ -169,16 +137,16 @@
         <!-- end::Global Config -->
 
 		<!--begin::Global Theme Bundle(used by all pages) -->
-		<script src="{{ asset('assets/vendors/base/vendors.bundle.js')}}" type="text/javascript"></script>
-		<script src="{{ asset('assets/demo/demo2/base/scripts.bundle.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
+		<script src="{{ asset('assets/demo/demo2/base/scripts.bundle.js') }}" type="text/javascript"></script>
         <!--end::Global Theme Bundle -->
         
          <!--begin::Page Scripts(used by this page) -->
-         <script src="{{asset('assets/app/custom/login/login-general.js')}}" type="text/javascript"></script>
+         <script src="{{ asset('assets/app/custom/login/login-general.js') }}" type="text/javascript"></script>
          <!--end::Page Scripts -->
 
 		<!--begin::Global App Bundle(used by all pages) -->
-		<script src="{{ asset('assets/app/bundle/app.bundle.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('assets/app/bundle/app.bundle.js') }}" type="text/javascript"></script>
 
 		<!--end::Global App Bundle -->
 	</body>

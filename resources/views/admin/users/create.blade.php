@@ -1,4 +1,4 @@
-@extends('layouts.backend') 
+@extends('layouts.metronic') 
 @section('title','Create new user') 
 @section('content')
 <div class="block">

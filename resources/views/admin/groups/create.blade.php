@@ -1,4 +1,4 @@
-@extends('layouts.backend')
+@extends('layouts.metronic')
 @section('content')
 
 <form method="POST" action="{{ route('admin.groups.store') }}">

@@ -1,4 +1,4 @@
-@extends('layouts.backend') 
+@extends('layouts.metronic') 
 @section('title',$training->name) 
 @section('content')
 <div class="row">
