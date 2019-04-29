@@ -1,4 +1,4 @@
-@extends('layouts.backend') 
+@extends('layouts.metronic') 
 @section('title','My trainings') 
 @section('content')
 
