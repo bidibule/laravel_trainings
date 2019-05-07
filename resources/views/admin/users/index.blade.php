@@ -1,5 +1,5 @@
 @extends('layouts.metronic')
-@section('title',__('List of users ('.count($users).')'))
+@section('title',__('Users ('.count($users).')'))
 @section('content')
 <div class="row">
   <div class="col-lg-12">
