@@ -1124,7 +1124,7 @@
 </div>
 @endsection
 @section('footer_scripts')
-<script src="{{ asset('assets/app/custom/general/dashboard.js') }}" type="text/javascript"></script>
-<script src="{{ asset('assets/js/user_profile.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/demo2/pages/dashboard.js') }}" type="text/javascript"></script>
+<script src="{{ asset('assets/js/demo2/pages/custom/apps/user/profile.js') }}" type="text/javascript"></script>
 @endsection
 
