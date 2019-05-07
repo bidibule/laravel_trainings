@@ -98,7 +98,7 @@
             <span class="kt-header__topbar-welcome">{{ __('Hi') }},</span><span class="kt-header__topbar-username">{{ auth()->user()->name }}</span>
             <img class="kt-hidden" alt="Pic" src="{{ asset('assets/media/users/300_21.jpg')}}">
             <!--use below badge element instead the user avatar to display username's first letter(remove kt-hidden class to display it) -->
-            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold kt-hidden-">S</span>
+            <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold kt-hidden-">{{ ucfirst(substr(auth()->user()->name,0,1)) }}</span>
         </div>
         <div class="dropdown-menu dropdown-menu-fit dropdown-menu-right dropdown-menu-anim dropdown-menu-xl">
             @include('layouts.partials.metronic.dropdown-user')

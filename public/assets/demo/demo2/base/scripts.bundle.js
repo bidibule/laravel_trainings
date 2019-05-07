@@ -2498,7 +2498,7 @@ $(document).ready(function() {
 									finalValue = column.template(obj, tri, datatable);
 								}
 
-								// sanitize using DOMPurify if installed
+								 // sanitize using DOMPurify if installed
 								if (typeof DOMPurify !== 'undefined') {
 									finalValue = DOMPurify.sanitize(finalValue);
 								}

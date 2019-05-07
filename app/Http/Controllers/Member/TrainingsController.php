@@ -27,8 +27,9 @@ class TrainingsController extends Controller
 
         $trainings_incompleted = $trainings->where('pivot.status',0);
         $trainings_completed = $trainings->where('pivot.status',1);
+        $compliance_percentage = round((count($trainings_completed)/count($trainings)*100),2);
 
-        return view('member.trainings.index', compact('trainings_incompleted','trainings_completed'));
+        return view('member.trainings.index', compact('trainings_incompleted','trainings_completed','compliance_percentage'));
     }
 
      /**

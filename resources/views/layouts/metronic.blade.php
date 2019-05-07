@@ -25,12 +25,13 @@
     <!--begin::Layout Skins(used by all pages) -->
     <!--end::Layout Skins -->
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico')}}" />
+    @yield('header_css')
     
 </head>
 <!-- end::Head -->
 <!-- begin::Body -->
 
-<body class="kt-page--loading-enabled kt-page--loading kt-page--fluid kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading">
+<body class="kt-page--loading-enabled kt-page--loading kt-page--fluid kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent  kt-page--loading">
     @include('layouts.partials.metronic.layout-page-loader')
     @include('layouts.partials.metronic.header-base-mobile')
     <div class="kt-grid kt-grid--hor kt-grid--root">
@@ -89,6 +90,7 @@
     <!--begin::Global App Bundle(used by all pages) -->
     <script src="{{ asset('assets/app/bundle/app.bundle.js')}}" type="text/javascript"></script>
     <!--end::Global App Bundle -->
+    @yield('footer_scripts')
 </body>
 <!-- end::Body -->
 
