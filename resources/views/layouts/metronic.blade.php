@@ -19,12 +19,17 @@
     <!--end::Fonts -->
     
     <!--begin::Global Theme Styles(used by all pages) -->
-    <link href="{{ asset('assets/vendors/base/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
-    <link href="{{ asset('assets/demo/demo2/base/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/vendors/global/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('assets/css/demo2/style.bundle.css')}}" rel="stylesheet" type="text/css" />
     <!--end::Global Theme Styles -->
     <!--begin::Layout Skins(used by all pages) -->
     <!--end::Layout Skins -->
+    
     <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico')}}" />
+
+    <!-- Custom CSS -->
+    <link href="{{ asset('custom/css/custom.css')}}" rel="stylesheet" type="text/css" />
+
     @yield('header_css')
     
 </head>
@@ -83,8 +88,8 @@
 </script>   
     <!-- end::Global Config -->
     <!--begin::Global Theme Bundle(used by all pages) -->
-    <script src="{{ asset('assets/vendors/base/vendors.bundle.js')}}" type="text/javascript"></script>
-    <script src="{{ asset('assets/demo/demo2/base/scripts.bundle.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/vendors/global/vendors.bundle.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/demo2/scripts.bundle.js')}}" type="text/javascript"></script>
     <!--end::Global Theme Bundle -->
     
     <!--begin::Global App Bundle(used by all pages) -->

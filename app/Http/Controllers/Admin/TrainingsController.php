@@ -86,8 +86,11 @@ class TrainingsController extends Controller
     public function show($id){  
         $training = Training::with('users')->find($id);
 
+        $training->users_incompleted = $training->users()->wherePivot('status', 0)->get();
+        $training->users_completed = $training->users()->wherePivot('status', 1)->get();
+
         //Checking percentage
-        $training->total_completion_percentage = ($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100;
+        $training->total_compliance_percentage = round((($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100),2);
       
         return view('admin.trainings.show',compact('training'));
     }

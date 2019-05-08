@@ -74,8 +74,9 @@ class UsersController extends Controller
 
         $user->trainings_incompleted = $user->trainings->where('pivot.status',0);
         $user->trainings_completed = $user->trainings->where('pivot.status',1);
+        $compliance_percentage = round((count($user->trainings_completed)/count($user->trainings)*100),2);
       
-        return view('admin.users.show',compact('user'));
+        return view('admin.users.show',compact('user','compliance_percentage'));
     }
 
     /**

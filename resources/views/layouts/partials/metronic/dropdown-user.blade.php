@@ -22,6 +22,7 @@
         <form id="logout" method="POST" action="{{ route('logout') }}" >
         @csrf
         <a href="#" onclick="document.getElementById('logout').submit();" class="btn btn-label-brand btn-sm btn-bold">Sign Out</a>
+        </form>
     </div>
 </div>
 <!--end: Navigation -->

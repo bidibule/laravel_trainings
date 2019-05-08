@@ -1,15 +1,11 @@
 @extends('layouts.metronic') 
-@section('title','List of trainings ('.count($trainings).')') 
+@section('title','Trainings ('.count($trainings).')') 
 @section('content')
-
-<div class="block">
-  <div class="block-header block-header-default">
-    <h3 class="block-title">&nbsp;</h3>
-    <div class="block-options">
-      <a href="{{  route('admin.trainings.create') }}"><button type="button" class="btn btn-sm btn-secondary">Add training</button></a>
-    </div>
-  </div>
-  <div class="block-content">
+<div class="row">
+    <div class="col-lg-12">
+  
+      <div class="kt-portlet">
+        <div class="kt-portlet__body">
   <table class="table table-striped">
     <thead class="thead-light">
       <tr>
@@ -45,5 +41,7 @@
     </tbody>
   </table>
   </div>
+</div>
+</div>
 </div>
 @endsection

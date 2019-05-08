@@ -7,7 +7,8 @@
         <div class="kt-portlet">
 
             <!--begin::Form-->
-            <form class="kt-form" method="POST" action="{{ route('admin.users.store') }}">
+           <form class="kt-form" method="POST" action="{{ route('admin.users.store') }}">
+                
                 @csrf
                 <div class="kt-portlet__body">
                     <div class="kt-section kt-section--first">

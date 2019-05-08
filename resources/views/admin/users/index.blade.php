@@ -6,9 +6,6 @@
 
     <div class="kt-portlet">
       <div class="kt-portlet__body">
-        <!--begin::Section-->
-        <div class="kt-section">
-          <div class="kt-section__content">
             <table class="table table-striped">
               <thead class="thead-light">
                 <tr>
@@ -45,11 +42,7 @@
                 @endforeach
               </tbody>
             </table>
-          </div>
-        </div>
-        <!--end::Section-->
       </div>
-      <!--end::Form-->
     </div>
   </div>
 </div>
