@@ -26,18 +26,19 @@ class Training extends Model
         return $this->belongsToMany(User::class)->withTimestamps()->withPivot('status','completion_date')->orderBy('name','ASC');
     }
 
-     public function groups(){
+    public function groups(){
         return $this->belongsToMany(Group::class)->withTimestamps()->orderBy('name','ASC');
     }
 
-    //Format effective date for input/ouput
-    public function setEffectiveDateAttribute($input){
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+     //Format effective date for input/ouput
+     public function setEffectiveDateAttribute($input){
         $this->attributes['effective_date'] = Carbon::createFromFormat('d-m-Y', $input)->format('Y-m-d');
     }
 
-    public function getEffectiveDateAttribute($input){
-        return Carbon::createFromFormat('Y-m-d', $input)->format('d-m-Y');
-    } 
 
     /**
      * Assign trainings and Users

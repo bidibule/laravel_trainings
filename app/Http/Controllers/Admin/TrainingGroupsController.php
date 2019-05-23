@@ -31,7 +31,7 @@ class TrainingGroupsController extends Controller
         // Synchronisation des trainings associés
         $training->syncUsersByGroups($request->get('groups'));
 
-        return redirect()->route('admin.admin.trainings.show',['id'=> $training->id]);
+        return redirect()->route('admin.trainings.show',['id'=> $training->id]);
     }
 
     public function edit(Training $training){

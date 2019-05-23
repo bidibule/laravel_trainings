@@ -21,8 +21,8 @@
       @foreach($trainings as $training)
       <tr>
         <th scope="row">{{ $loop->iteration }}</th>
-        <td><a href="{{ route('admin.trainings.edit',['id' => $training->id ]) }}">{{ $training->name }}</a></td>
-        <td>{{ $training->effective_date }}</td>
+        <td><a href="{{ route('admin.trainings.show',['id' => $training->id ]) }}">{{ format_procedure_name($training) }}</a></td>
+        <td>{{ format_date($training->effective_date) }}</td>
         <td>{{ config('app.training_statuses.'.$training->status) }}</td>
 
         <td>{{ ($training->users->count() >0) ? round((($training->users()->wherePivot('status', 1)->count() / $training->users->count())*100),2).'%' : '-' }}</td>

@@ -1,20 +1,12 @@
 @extends('layouts.metronic')
-@section('title','Edit group for '.$user->name)
+@section('title','Edit group')
+@section('subtitle', $user->name)
 @section('content')
 <div class="row">
     <div class="col-lg-8">
         <div class="kt-portlet">
-            <div class="kt-portlet__head">
-                <div class="kt-portlet__head-label">
-                    <h3 class="kt-portlet__head-title">
-                        {{ __('Add new user')  }}
-                    </h3>
-                </div>
-            </div>
-            <form method="POST" action="/users/{{ $user->id }}/groups">
+            <form method="POST" action="/admin/users/{{ $user->id }}/groups">
                 <div class="kt-portlet__body">
-                    <div class="kt-section kt-section--first">
-
                         @csrf
                         @method('PATCH')
                         <div class="form-group">
@@ -28,22 +20,46 @@
                             </select>
 
                         </div>
-
-                        <div class="form-group">
-
-                            <button type="submit" class="btn btn-alt-primary">Update</button>
-
-                        </div>
-
-                    </div>
                 </div>
                 <div class="kt-portlet__foot">
                     <div class="kt-form__actions">
-                        <button type="submit" class="btn btn-primary">Add user</button>
+                        <button type="submit" class="btn btn-primary">Update groups</button>
                     </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+@endsection
+@section('footer_scripts')
+
+<script type="text/javascript">
+    // Class definition
+    var KTSelect2 = function() {
+        // Private functions
+        var demos = function() {
+    
+            // multi select
+            $('#groups, #kt_select_groups_validate').select2({
+                placeholder: "Select groups",
+            });
+    
+           
+        }
+    
+        // Public functions
+        return {
+            init: function() {
+                demos();
+            }
+        };
+    }();
+    
+    // Initialization
+    jQuery(document).ready(function() {
+        KTSelect2.init();
+    });
+    
+    </script>
+    
 @endsection

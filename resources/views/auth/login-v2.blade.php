@@ -29,12 +29,11 @@
 		<!--end::Page Custom Styles -->
 
 		<!--begin::Global Theme Styles(used by all pages) -->
-		<link href="{{ asset('assets/vendors/base/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/vendors/global/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
+        <link href="{{ asset('assets/css/demo2/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+    
 
-		<!--RTL version:<link href="{{ asset('assets/vendors/base/vendors.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />-->
-		<link href="{{ asset('assets/demo/demo2/base/style.bundle.css')}}" rel="stylesheet" type="text/css" />
-
-		<!--RTL version:<link href="{{ asset('assets/demo/demo2/base/style.bundle.rtl.css')}}" rel="stylesheet" type="text/css" />-->
+		<!--RTL version:<link href="assets/demo/demo2/base/style.bundle.rtl.css" rel="stylesheet" type="text/css" />-->
 
 		<!--end::Global Theme Styles -->
 
@@ -137,8 +136,8 @@
         <!-- end::Global Config -->
 
 		<!--begin::Global Theme Bundle(used by all pages) -->
-		<script src="{{ asset('assets/vendors/base/vendors.bundle.js') }}" type="text/javascript"></script>
-		<script src="{{ asset('assets/demo/demo2/base/scripts.bundle.js') }}" type="text/javascript"></script>
+		<<script src="{{ asset('assets/vendors/global/vendors.bundle.js')}}" type="text/javascript"></script>
+		<script src="{{ asset('assets/js/demo2/scripts.bundle.js')}}" type="text/javascript"></script>
         <!--end::Global Theme Bundle -->
         
          <!--begin::Page Scripts(used by this page) -->

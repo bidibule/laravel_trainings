@@ -70,11 +70,11 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = User::findOrFail($id)->with('trainings')->first();
+        $user = User::with('trainings')->findOrFail($id);
 
         $user->trainings_incompleted = $user->trainings->where('pivot.status',0);
         $user->trainings_completed = $user->trainings->where('pivot.status',1);
-        $compliance_percentage = round((count($user->trainings_completed)/count($user->trainings)*100),2);
+        $compliance_percentage = (count($user->trainings) > 0) ? round((count($user->trainings_completed)/count($user->trainings)*100),2) : 0;
       
         return view('admin.users.show',compact('user','compliance_percentage'));
     }

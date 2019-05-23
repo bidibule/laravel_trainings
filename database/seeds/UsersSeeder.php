@@ -13,9 +13,11 @@ class UsersSeeder extends Seeder
     {
         // Inserting default user
         DB::table('users')->insert([
-            [ 'name' => 'benjamin Blampain',
+            [ 'name' => 'Benjamin Blampain',
                       'email' => 'benjamin.blampain@ankaroo.com',
-                      'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'
+                      'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi',
+                      'avatar' => 'https://randomuser.me/api/portraits/men/99.jpg',
+                      'role' => 'admin'
             ],
                    
         ]);

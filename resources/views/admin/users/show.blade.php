@@ -78,7 +78,7 @@
                 </div>
                 <div class="kt-portlet__head-toolbar">
                     <a href="{{ route('admin.users.editGroups',['id' => $user->id]) }}" class="btn btn-clean btn-sm btn-bold">
-                        <i class="la la-pencil"></i> Update
+                        <i class="la la-pencil"></i> {{ __('Update') }}
                     </a>
                 
                 </div>

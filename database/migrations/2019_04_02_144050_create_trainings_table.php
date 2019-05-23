@@ -20,6 +20,9 @@ class CreateTrainingsTable extends Migration
             $table->date('effective_date');
             $table->unsignedInteger('status');
             $table->text('path')->nullable;
+            $table->unsignedInteger('type')->default(1);
+            $table->unsignedInteger('version')->default(1);
+            $table->unsignedInteger('category_id');
             $table->timestamps();
 
         });

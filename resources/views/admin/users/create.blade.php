@@ -62,3 +62,35 @@
     </div>
 </div>
 @endsection
+
+@section('footer_scripts')
+<script type="text/javascript">
+// Class definition
+var KTSelect2 = function() {
+    // Private functions
+    var demos = function() {
+
+        // multi select
+        $('#groups, #kt_select_groups_validate').select2({
+            placeholder: "Select groups",
+        });
+
+       
+    }
+
+    // Public functions
+    return {
+        init: function() {
+            demos();
+        }
+    };
+}();
+
+// Initialization
+jQuery(document).ready(function() {
+    KTSelect2.init();
+});
+
+</script>
+    
+@endsection

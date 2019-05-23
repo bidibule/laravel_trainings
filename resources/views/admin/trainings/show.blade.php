@@ -1,6 +1,6 @@
 @extends('layouts.metronic') 
 @section('title','Trainings')
-@section('subtitle',$training->name)
+@section('subtitle','0'.$training->category->id.'-'.strtoupper($training->category->abbreviation).'-V0'.$training->version.'-'.$training->name)
 @section('content')
 
 <div class="row">

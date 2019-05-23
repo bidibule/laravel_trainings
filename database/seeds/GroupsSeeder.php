@@ -12,13 +12,12 @@ class GroupsSeeder extends Seeder
     public function run()
     {
             
-        // Making 7 groups
         DB::table('groups')->insert([
             [ 'name' => 'IT'],
-            [ 'name' => 'BioIT'],
+            [ 'name' => 'Simulation'],
             [ 'name' => 'Comex'],
             [ 'name' => 'All'],
-            [ 'name' => 'Production']
+            [ 'name' => 'Medical']
         ]);
     }
 }

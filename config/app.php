@@ -240,8 +240,16 @@ return [
      'training_user_statuses' => [
         0 => 'Incompleted',
         1 => 'Completed',
-       
      ],
+    // for Training statuses
+    'training_types' => [
+            0 => 'Procedure',
+            1 => 'Guidance',
+            2 => 'Template',
+            3 => 'Register',
+            4 => 'Form',
+            5 => 'Document'
+         ],
      'completion_goal' => 80
 
 ];

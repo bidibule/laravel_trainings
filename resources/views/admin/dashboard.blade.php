@@ -1,35 +1,40 @@
 @extends('layouts.metronic')
 @section('title', 'Dashboard')
-    
 
 @section('content')
 <div class="row">
     <div class="col-12">
-        <div class="block">
-            <div class="block-header block-header-default">
-                <h3 class="block-title">{{ __('Individual Training Compliance Status') }}</h3>
+        <div class="kt-portlet">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <span class="kt-portlet__head-icon"><i class="flaticon2-calendar-2"></i></span>
+                    <h3 class="kt-portlet__head-title">{{ __('Individual Training Compliance Status') }}</h3>
+                </div>
             </div>
-            <div class="block-content">
-                    <div id="chartdiv-users" class="amcharts"></div>
+            <div class="kt-portlet__body">
+                <div id="chartdiv-users" class="amcharts"></div>
             </div>
-        </div>
-       
+        </div>  
     </div>
 </div>
 <div class="row">
-        <div class="col-12">
-            <div class="block">
-                <div class="block-header block-header-default">
-                    <h3 class="block-title">{{ __('Training Compliance Status per Group') }}</h3>
-                </div>
-                <div class="block-content">
-                        <div id="chartdiv-groups" class="amcharts"></div>
-                </div>
+    <div class="col-12">
+        <div class="kt-portlet">
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                    <span class="kt-portlet__head-icon">
+                            <i class="flaticon2-calendar-2"></i>
+                    </span>
+                    <h3 class="kt-portlet__head-title"> {{ __('Training Compliance Status per Group') }}</h3>
+                 </div>
+    
             </div>
-           
+            <div class="kt-portlet__body">
+                <div id="chartdiv-groups" class="amcharts"></div>
+            </div>
         </div>
     </div>
-  
+</div>
 @endsection
 
 @section('footer_scripts')
@@ -49,9 +54,8 @@ var chart = am4core.create("chartdiv-users", am4charts.XYChart);
 
 // Export
 chart.exporting.menu = new am4core.ExportMenu();
-
-// Data for both series
-var data = {!! $data_users !!};
+chart.seriesContainer.zIndex = -1;
+chart.data = {!! $data_users !!};
 
 /* Create axes */
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -105,8 +109,6 @@ average.label.inside = true;
 average.label.text = "Average ("+average.value+"%)";
 average.label.fill = average.grid.stroke;
 average.label.verticalCenter = "bottom";
-
-chart.data = data;
 
 /**
     Create chart instance for groups

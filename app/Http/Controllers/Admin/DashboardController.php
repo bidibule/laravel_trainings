@@ -29,18 +29,23 @@ class DashboardController extends Controller
     {
 
 
-        // Compliance for each user
-        $users = User::all();
+       // Compliance for each user
+       $users = User::all();
+       $collection_users = collect();
 
-        $i = $average = 0;
-        foreach ($users as $user) {
-            $data_users[$i]['name'] = $user->name;
-            $data_users[$i]['completion_percentage'] = $user->getCompliance();
-            $average += $data_users[$i]['completion_percentage'];
-            $i++;
-        }
+       foreach ($users as $user) {
+          $compliance = $user->getCompliance();
+          
+          $collection_users->push([
+              'name' => $user->name,
+              'id' => $user->id,
+              'completion_percentage' => $compliance
+          ]);            
+         
+       }
 
-        $average_users = round(($average / $i), 2);
+       $average_users = round($collection_users->avg('completion_percentage'), 2);
+       $collection_users = $collection_users->sortByDesc('completion_percentage')->values()->toJson();
 
         //Compliance for each Group
         $groups = Group::with('users')->get();
@@ -64,7 +69,7 @@ class DashboardController extends Controller
         $average_groups = round(($average_group / $g), 2);
 
         return view('admin.dashboard', [
-            'data_users' => json_encode($data_users),
+            'data_users' => $collection_users,
             'average_completion_users' => $average_users,
             'data_groups' => json_encode($data_groups),
             'average_completion_groups' => $average_groups

@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Training;
 use App\User;
 use App\Group;
+use App\Category;
 
 class TrainingsController extends Controller
 {
@@ -34,7 +35,7 @@ class TrainingsController extends Controller
      */
     public function index()
     {
-        $trainings = Training::orderBy('name','ASC')->get();
+        $trainings = Training::with('category')->orderBy('name','ASC')->get();
         
 
         return view('admin.trainings.index', compact('trainings'));
@@ -46,7 +47,9 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create(){
-        return view('admin.trainings.create');
+
+        $categories = Category::all();
+        return view('admin.trainings.create',compact('categories'));
     }
 
     /**
@@ -74,7 +77,7 @@ class TrainingsController extends Controller
 
         Training::create($attributes);
 
-        return redirect()->route('admin.admin.trainings.index');
+        return redirect()->route('admin.trainings.index');
     }
 
     /**
@@ -84,7 +87,9 @@ class TrainingsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id){  
-        $training = Training::with('users')->find($id);
+
+
+        $training = Training::with('users','category')->find($id);
 
         $training->users_incompleted = $training->users()->wherePivot('status', 0)->get();
         $training->users_completed = $training->users()->wherePivot('status', 1)->get();
@@ -105,8 +110,9 @@ class TrainingsController extends Controller
         $training = Training::find($id);
         $users = User::all();
         $groups = Group::all();
+        $categories = Category::all();
 
-        return view('admin.trainings.edit',compact('training','users','groups'));
+        return view('admin.trainings.edit',compact('training','users','groups','categories'));
     }
 
     /**
@@ -140,7 +146,7 @@ class TrainingsController extends Controller
         
         $training->update($attributes);
 
-        return redirect()->route('admin.admin.trainings.show',['id' => $training->id]);
+        return redirect()->route('admin.trainings.show',['id' => $training->id]);
     }
 
     /**

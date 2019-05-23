@@ -1,29 +1,29 @@
 @extends('layouts.metronic') 
-@section('title','My trainings') 
+@section('title','My trainings ('.($trainings_completed->count()+$trainings_incompleted->count()).')') 
 @section('content')
 <div class="row">
     <div class="col-lg-9">
         <div class="kt-portlet kt-portlet--tabs">
-          <div class="kt-portlet__head">
-            <div class="kt-portlet__head-label">
-              <h3 class="kt-portlet__head-title">
-                {{ __('My Trainings') }}
-              </h3>
-            </div>
-            <div class="kt-portlet__head-toolbar">
-              <ul class="nav nav-tabs nav-tabs-bold nav-tabs-line nav-tabs-line-right nav-tabs-line-brand" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" data-toggle="tab" href="#tab-incomplete" role="tab">
-                        <i class="la la-warning"></i>
-                        {{ __('Incomplete') }} ({{ count($trainings_incompleted) }})
-                      </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" data-toggle="tab" href="#tab-complete" role="tab"><i class="la la-check"></i> {{ __('Complete') }} ({{ count($trainings_completed) }})</a>
-                </li>
-              </ul>
-            </div>
-          </div>
+            <div class="kt-portlet__head">
+                <div class="kt-portlet__head-label">
+                  <h3 class="kt-portlet__head-title">
+                   
+                  </h3>
+                </div>
+                <div class="kt-portlet__head-toolbar">
+                  <ul class="nav nav-tabs nav-tabs-bold nav-tabs-line nav-tabs-line-right nav-tabs-line-brand" role="tablist">
+                    <li class="nav-item">
+                      <a class="nav-link active" data-toggle="tab" href="#tab-incomplete" role="tab">
+                            <i class="la la-warning"></i>
+                            {{ __('Incomplete') }} ({{ count($trainings_incompleted) }})
+                          </a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" data-toggle="tab" href="#tab-complete" role="tab"><i class="la la-check"></i> {{ __('Complete') }} ({{ count($trainings_completed) }})</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
           <div class="kt-portlet__body">
             <div class="tab-content">
               <div class="tab-pane active" id="tab-incomplete">
@@ -78,7 +78,7 @@
                       <th scope="row">{{ $loop->iteration }}</th>
                       <td>{{ $training->name }}</td>
                       <td>{{ $training->effective_date }}</td>
-                      <td>{{ \Carbon\Carbon::parse($training->pivot->completion_date)->format('d-m-Y') }}</td>
+                      <td>{{ format_date($training->pivot->completion_date) }}</td>
                       <td>
                         <h5><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></h5>
                       </td>

@@ -5,6 +5,7 @@
 <div class="row">
   <div class="col-lg-9">
     <div class="kt-portlet kt-portlet--height-fluid">
+      
       <div class="kt-portlet__body">
         <div class="kt-portlet__content">
           <embed src="{{ asset('pdf/sample-sop.pdf')}}" type="application/pdf" width="100%" height="600">
