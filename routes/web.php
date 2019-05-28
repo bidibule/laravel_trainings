@@ -22,6 +22,7 @@ Route::middleware('can:accessAdminpanel')->prefix('admin')->name('admin.')->grou
     Route::resource('users', 'Admin\UsersController');
     Route::resource('groups', 'Admin\GroupsController');
     Route::resource('trainings', 'Admin\TrainingsController');
+    Route::resource('categories', 'Admin\CategoriesController');
 
     Route::get('users/{user}/training/{training}','Admin\UserTrainingController@getUserTraining')->name('trainings.user_training');
     

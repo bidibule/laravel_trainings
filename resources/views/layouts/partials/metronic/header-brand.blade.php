@@ -39,11 +39,18 @@
                         </a>
                     </li>
                     <li class="kt-nav__item">
-                        <a class="kt-nav__link" href="{{ route('admin.trainings.index') }}">
+                        <a class="kt-nav__link" href="{{ route('admin.categories.index') }}">
                             <span class="kt-nav__link-icon"><i class="la la-tags"></i></span>
                             <span class="kt-nav__link-text">Categories</span>
                         </a>
                     </li>
+                    <li class="kt-nav__separator"></li>
+                    <li class="kt-nav__item">
+                            <a class="kt-nav__link" href="{{ route('admin.trainings.index') }}">
+                                <span class="kt-nav__link-icon"><i class="la la-book"></i></span>
+                                <span class="kt-nav__link-text">Visitor log</span>
+                            </a>
+                        </li>
                    
                 </ul>
             </div>

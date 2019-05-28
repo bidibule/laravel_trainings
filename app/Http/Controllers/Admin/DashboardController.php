@@ -45,33 +45,42 @@ class DashboardController extends Controller
        }
 
        $average_users = round($collection_users->avg('completion_percentage'), 2);
-       $collection_users = $collection_users->sortByDesc('completion_percentage')->values()->toJson();
+       $collection_users = $collection_users->sortByDesc('completion_percentage');
 
-        //Compliance for each Group
-        $groups = Group::with('users')->get();
-        $g = $average_group = 0;
+         /**
+          * Compliance for each Group
+          * We add all users score and then with group them 
+          * into a collection where we manipulate data
+          */
 
+         $groups = Group::with('users')->get();
+         $collection_groups = collect();
+ 
         foreach ($groups as $group) {
-            $data_groups[$g]['name'] = $group->name;
-            $average = 0 ;
+             
+            $average = $group_completion_percentage = 0 ;
             foreach ($group->users as $user) {
                 $average += $user->getCompliance();
             }
-            
-            if($group->users()->count() > 0){
-                $data_groups[$g]['completion_percentage'] = round($average/$group->users()->count(),2);
-                $average_group += $data_groups[$g]['completion_percentage'];
-            } 
-            
-            $g++;
-        }
+             
+            if($group->users()->count() > 0)
+                $group_completion_percentage  = round($average/$group->users()->count(),2);
 
-        $average_groups = round(($average_group / $g), 2);
+            $collection_groups->push([
+                'name' => $group->name,
+                'id' => $user->id,
+                'completion_percentage' => $group_completion_percentage
+            ]); 
+ 
+         }
+ 
+         $average_groups = round($collection_groups->avg('completion_percentage'), 2);
+         $collection_groups = $collection_groups->sortByDesc('completion_percentage');
 
         return view('admin.dashboard', [
-            'data_users' => $collection_users,
+            'data_users' => $collection_users->values()->toJson(),
             'average_completion_users' => $average_users,
-            'data_groups' => json_encode($data_groups),
+            'data_groups' => $collection_groups->values()->toJson(),
             'average_completion_groups' => $average_groups
         ]);
     }

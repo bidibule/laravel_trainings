@@ -56,6 +56,7 @@ var chart = am4core.create("chartdiv-users", am4charts.XYChart);
 chart.exporting.menu = new am4core.ExportMenu();
 chart.seriesContainer.zIndex = -1;
 chart.data = {!! $data_users !!};
+chart.seriesContainer.zIndex = -1;
 
 /* Create axes */
 var categoryAxis = chart.xAxes.push(new am4charts.CategoryAxis());
@@ -120,6 +121,7 @@ chart_groups.exporting.menu = new am4core.ExportMenu();
 
 // Data for both series
 var data = {!! $data_groups !!};
+chart_groups.seriesContainer.zIndex = -1;
 
 /* Create axes */
 var categoryAxis_groups = chart_groups.xAxes.push(new am4charts.CategoryAxis());

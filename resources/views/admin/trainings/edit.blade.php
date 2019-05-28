@@ -32,7 +32,7 @@
                     <label for="type">{{ __('Category') }}</label>
                     <select class="form-control" id="category" name="category">
                     @foreach($categories as $category)
-                        <option value="{{ $category->id }}" {{ ($training->category->id == $category->id) ? 'selected' : '' }}>0{{ $category->id.'-'.$category->title }}</option>
+                        <option value="{{ $category->id }}" {{ ($training->category->id == $category->id) ? 'selected' : '' }}>0{{ $category->id.'-'.$category->name }}</option>
                     @endforeach
                     </select>
             </div>
