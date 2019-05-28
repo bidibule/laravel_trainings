@@ -13,12 +13,11 @@
     <div class="kt-subheader__toolbar">
         <div class="kt-subheader__wrapper">
             @if($training->pivot->status == 0)
-            <form> @csrf @method('PATCH')
-                <a href="#" class="btn kt-subheader__btn-primary" style="color: #959cb6" onclick="this.form.submit()"><i class="la la-check fa-lg"></i> {{ _('Complete procedure') }}</a>
-            </form>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                   <i class="la la-check-circle-o"></i> {{ __('Complete procedure') }}
+            </button>
             @endif
-            <a href="#" class="btn kt-subheader__btn-primary btn-icon" title="{{ __('Download Procedure') }}"> <i class="la la-download"></i> </a>     
-        </div>
+                 </div>
        
     </div>
 

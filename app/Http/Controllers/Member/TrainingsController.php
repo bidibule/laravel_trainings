@@ -50,11 +50,10 @@ class TrainingsController extends Controller
 
         $training = User::findOrFail(auth()->id())->trainings()->where('id',$id)->first();
 
-        $completion_date = request()->has('completed') ? date('Y-m-d') : null;
-        $training->users()->updateExistingPivot(auth()->id(),['status' => request()->has('completed') ,'completion_date' => $completion_date]);
+        $training->users()->updateExistingPivot(auth()->id(),['status' => 1 ,'completion_date' => date('Y-m-d')]);
         
         session()->flash('message', 'Training is now completed');
-        return redirect()->route('member.trainings.show',['id' => $training->id]);
+        return redirect()->route('member.trainings.index');
 
     }
 }

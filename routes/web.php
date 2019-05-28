@@ -16,7 +16,6 @@
 Auth::routes(['register' => false]);
 
 
-
 Route::middleware('can:accessAdminpanel')->prefix('admin')->name('admin.')->group(function () {
     
     Route::get('dashboard', 'Admin\DashboardController@index')->name('dashboard');
