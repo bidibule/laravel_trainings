@@ -93,7 +93,7 @@ series_individual.dataFields.valueY = "completion_percentage";
 series_individual.dataFields.categoryX = "name";
 
 series_individual.columns.template.tooltipText = "[#fff font-size: 15px]{categoryX}\n [/][#fff font-size: 20px]{valueY} %[/]";
-//series_individual.columns.template.fill = am4core.color("#5a5");
+series_individual.columns.template.fill = am4core.color("#82ccdd");
 series_individual.columns.template.propertyFields.fillOpacity = "fillOpacity";
 series_individual.columns.template.propertyFields.stroke = "stroke";
 series_individual.columns.template.propertyFields.strokeWidth = "strokeWidth";
@@ -103,7 +103,7 @@ series_individual.tooltip.label.textAlign = "middle";
 // Getting a specific value for the user column
 series_individual.columns.template.adapter.add("fill", function(fill, target) {
   if (target.dataItem && (target.dataItem.categoryX == "{!! auth()->user()->name!!}")) {
-    return am4core.color("#000000");
+    return am4core.color("#3c6382");
   }
   else {
     return fill;
@@ -141,6 +141,7 @@ average_individual.label.verticalCenter = "bottom";
 var chart_groups = am4core.create("chartdiv-groups", am4charts.XYChart);
 chart_groups.exporting.menu = new am4core.ExportMenu();
 chart_groups.data = {!! $data_groups !!};
+chart_groups.seriesContainer.zIndex = -1;
 
 /* Create axes */
 var categoryAxis_groups = chart_groups.xAxes.push(new am4charts.CategoryAxis());
@@ -167,6 +168,7 @@ series_groups.dataFields.categoryX = "name";
 
 series_groups.columns.template.tooltipText = "[#fff font-size: 15px]{categoryX}\n [/][#fff font-size: 20px]{valueY} %[/]"
 series_groups.columns.template.propertyFields.fillOpacity = "fillOpacity";
+series_groups.columns.template.fill = am4core.color("#82ccdd");
 series_groups.columns.template.propertyFields.stroke = "stroke";
 series_groups.columns.template.propertyFields.strokeWidth = "strokeWidth";
 series_groups.columns.template.propertyFields.strokeDasharray = "columnDash";

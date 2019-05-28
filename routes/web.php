@@ -45,6 +45,9 @@ Route::prefix('member')->name('member.')->group(function () {
    
     Route::get('trainings', 'Member\TrainingsController@index')->name('trainings.index');
     Route::get('trainings/{training}', 'Member\TrainingsController@show')->name('trainings.show');
+
+    Route::get('profile', 'Member\UsersController@profile')->name('profile');
+
     Route::patch('trainings/{training}','Member\TrainingsController@updateTrainingStatus')->name('trainings.update_status');
 
 });

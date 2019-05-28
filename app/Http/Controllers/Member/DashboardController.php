@@ -48,37 +48,34 @@ class DashboardController extends Controller
  
          //Compliance for each Group
          $groups = Group::with('users')->get();
-         $g = $average_group = 0;
          $collection_groups = collect();
  
-         foreach ($groups as $group) {
+        foreach ($groups as $group) {
              
-             $collection_groups->push([
+            $average = $group_completion_percentage = 0 ;
+            foreach ($group->users as $user) {
+                $average += $user->getCompliance();
+            }
+             
+            if($group->users()->count() > 0)
+                $group_completion_percentage  = round($average/$group->users()->count(),2);
+
+            $collection_groups->push([
                 'name' => $group->name,
                 'id' => $user->id,
-                'completion_percentage' => $compliance
+                'completion_percentage' => $group_completion_percentage
             ]); 
-             $average = 0 ;
-             foreach ($group->users as $user) {
-                 $average += $user->getCompliance();
-             }
-             
-             if($group->users()->count() > 0){
-                 $data_groups[$g]['completion_percentage'] = round($average/$group->users()->count(),2);
-                 $average_group += $data_groups[$g]['completion_percentage'];
-             } 
-             
-             $g++;
+ 
          }
  
-         $average_groups = round(($average_group / $g), 2);
+         $average_groups = round($collection_groups->avg('completion_percentage'), 2);
+         $collection_groups = $collection_groups->sortByDesc('completion_percentage');
 
-         //ordering arrays
  
          return view('member.dashboard', [
              'data_users' => $collection_users->values()->toJson(),
              'average_completion_users' => $average_users,
-             'data_groups' => json_encode($data_groups),
+             'data_groups' => $collection_groups->values()->toJson(),
              'average_completion_groups' => $average_groups
          ]);
         

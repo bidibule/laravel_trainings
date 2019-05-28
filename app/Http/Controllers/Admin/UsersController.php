@@ -57,7 +57,14 @@ class UsersController extends Controller
         //hashing password
         $attributes['password'] = Hash::make($attributes['password']);
         
-        User::create($attributes);
+        $user = User::create($attributes);
+
+        // Send notification to user if the checkbox is set
+        if($request->has('notify')){
+            Mail::to($attributes['email'])->send(
+                new UserCreated($user)
+            );
+        }
 
         return redirect()->route('admin.users.index');
     }

@@ -31,18 +31,18 @@
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Effective Date</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">{{ __('Name') }}</th>
+                      <th scope="col">{{ __('Effective date') }}</th>
+                      <th scope="col">{{ __('Status') }}</th>
+                      <th scope="col">{{ __('Action') }}</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach($trainings_incompleted as $training)
                     <tr>
                       <th scope="row">{{ $loop->iteration }}</th>
-                      <td>{{ $training->name }}</td>
-                      <td>{{ $training->effective_date }}</td>
+                      <td>{{ format_procedure_name($training) }}</td>
+                      <td>{{ format_date($training->effective_date) }}</td>
                       <td>
                         <h5><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></h5>
                       </td>
@@ -65,19 +65,19 @@
                   <thead class="thead-light">
                     <tr>
                       <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Effective Date</th>
-                      <th scope="col">Completion Date</th>
-                      <th scope="col">Status</th>
-                      <th scope="col">Action</th>
+                      <th scope="col">{{ __('Name') }}</th>
+                      <th scope="col">{{ __('Effective date') }}</th>
+                      <th scope="col">{{ __('Completion date') }}</th>
+                      <th scope="col">{{ __('Status') }}</th>
+                      <th scope="col">{{ __('Action') }}</th>
                     </tr>
                   </thead>
                   <tbody>
                     @foreach($trainings_completed as $training)
                     <tr>
                       <th scope="row">{{ $loop->iteration }}</th>
-                      <td>{{ $training->name }}</td>
-                      <td>{{ $training->effective_date }}</td>
+                      <td>{{ format_procedure_name($training) }}</td>
+                      <td>{{ format_date($training->effective_date) }}</td>
                       <td>{{ format_date($training->pivot->completion_date) }}</td>
                       <td>
                         <h5><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></h5>

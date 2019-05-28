@@ -113,7 +113,7 @@
     <div class="kt-grid__item kt-grid__item--fluid kt-app__content">
       
         <div class="row">
-            <div class="col-xl-6">
+            <div class="col-md-12">
                     <div class="kt-portlet kt-portlet--tabs">
                             <div class="kt-portlet__head">
                               <div class="kt-portlet__head-label">
@@ -142,10 +142,10 @@
                                     <thead class="thead-light">
                                       <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Effective Date</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">{{ __('Name') }}</th>
+                                        <th scope="col">{{ __('Effective date') }}</th>
+                                        <th scope="col">{{ __('Status') }}</th>
+                                        <th scope="col">{{ __('Action') }}</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -153,7 +153,7 @@
                                       <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $training->name }}</td>
-                                        <td>{{ $training->effective_date }}</td>
+                                        <td>{{ format_date($training->effective_date) }}</td>
                                         <td>
                                           <h5><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></h5>
                                         </td>
@@ -177,11 +177,11 @@
                                     <thead class="thead-light">
                                       <tr>
                                         <th scope="col">#</th>
-                                        <th scope="col">Name</th>
-                                        <th scope="col">Effective Date</th>
-                                        <th scope="col">Completion Date</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
+                                        <th scope="col">{{ __('Name') }}</th>
+                                        <th scope="col">{{ __('Effective date') }}</th>
+                                        <th scope="col">{{ __('Completion date') }}</th>
+                                        <th scope="col">{{ __('Status') }}</th>
+                                        <th scope="col">{{ __('Action') }}</th>
                                       </tr>
                                     </thead>
                                     <tbody>
@@ -189,7 +189,7 @@
                                       <tr>
                                         <th scope="row">{{ $loop->iteration }}</th>
                                         <td>{{ $training->name }}</td>
-                                        <td>{{ $training->effective_date }}</td>
+                                        <td>{{ format_date($training->effective_date) }}</td>
                                         <td>{{ \Carbon\Carbon::parse($training->pivot->completion_date)->format('d-m-Y') }}</td>
                                         <td>
                                           <h5><span class="badge badge-{{ ($training->pivot->status) ? 'success' : 'warning'  }}">{{ config('app.training_user_statuses.'.$training->pivot->status) }}</span></h5>
