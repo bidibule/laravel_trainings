@@ -4,11 +4,13 @@ use App\Http\Controllers\Controller;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\Rule;
 
 use App\User;
 use App\Group;
 use App\Training;
+use App\Mail\UserCreated;
 
 class UsersController extends Controller
 {
@@ -139,4 +141,6 @@ class UsersController extends Controller
     {
         //
     }
+
+    
 }

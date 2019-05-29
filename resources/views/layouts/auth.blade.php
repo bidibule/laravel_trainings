@@ -1,79 +1,109 @@
-<!doctype html>
-<html lang="en" class="no-focus">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+<!DOCTYPE html>
+<html lang="en">
 
-        <title>@yield('title')</title>
+<title>@yield('title')</title>
+<meta name="description" content="Login page example">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-        <meta name="description" content="">
-        <meta name="author" content="pixelcave">
-        <meta name="robots" content="noindex, nofollow">
+<!--begin::Fonts -->
+<script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.16/webfont.js"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" media="all">
+<script>
+    WebFont.load({
+                google: {"families":["Poppins:300,400,500,600,700"]},
+                active: function() {
+                    sessionStorage.fonts = true;
+                }
+            });
+</script>
+<!--end::Fonts -->
 
-       <!-- Icons -->
-        <!-- The following icons can be replaced with your own, they are used by desktop and mobile browsers -->
-        <link rel="shortcut icon" href="{{ asset('assets/media/favicons/favicon.png') }}">
-        <link rel="icon" type="image/png" sizes="192x192" href="{{ asset('assets/media/favicons/favicon-192x192.png') }}">
-        <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('assets/media/favicons/apple-touch-icon-180x180.png') }}">
-        <!-- END Icons -->
 
-        <!-- Stylesheets -->
 
-        <!-- Fonts and Codebase framework -->
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Muli:300,400,400i,600,700">
-        <link rel="stylesheet" id="css-main" href="{{ asset('assets/css/codebase.min.css') }}">
+<!--begin::Page Custom Styles(used by this page) -->
+<link href="{{ asset('assets/css/demo2/pages/general/login/login-1.css') }}" rel="stylesheet" type="text/css">
+<!--end::Page Custom Styles -->
 
-        <!-- You can include a specific file from css/themes/ folder to alter the default color theme of the template. eg: -->
-        <!-- <link rel="stylesheet" id="css-theme" href="assets/css/themes/flat.min.css"> -->
-        <!-- END Stylesheets -->
-    </head>
-    <body>
+<!--begin::Global Theme Styles(used by all pages) -->
+<link href="{{ asset('assets/vendors/global/vendors.bundle.css')}}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('assets/css/demo2/style.bundle.css')}}" rel="stylesheet" type="text/css" />
+<!--end::Global Theme Styles -->
 
-        <!-- Page Container -->
-         <div id="page-container" class="main-content-boxed">
+<!--begin::Layout Skins(used by all pages) -->
+<!--end::Layout Skins -->
 
-            <!-- Main Container -->
-            <main id="main-container">
+<link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico')}}" />
+</head>
+<!-- end::Head -->
 
-                <!-- Page Content -->
-                <div class="bg-body-dark bg-pattern" style="background-image: url('assets/media/various/bg-pattern-inverse.png');">
-                    <div class="row mx-0 justify-content-center">
-                        <div class="hero-static col-lg-6 col-xl-4">
-                            <div class="content content-full overflow-hidden">
-                                <!-- Header -->
-                                <div class="py-30 text-center">
-                                    <h1 class="h4 font-w700 mt-30 mb-10">Trainings App</h1>
-                                    <h2 class="h5 font-w400 text-muted mb-0">It’s a great day today!</h2>
-                                </div>
-                                <!-- END Header -->
-                                
-                                @yield('content')
-                               
+<!-- begin::Body -->
+
+<body
+    class="kt-page--loading-enabled kt-page--fixed kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header--minimize-topbar kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent">
+
+    <!-- begin::Page loader -->
+
+    <!-- end::Page Loader -->
+    <!-- begin:: Page -->
+    <div class="kt-grid kt-grid--ver kt-grid--root kt-page">
+        <div class="kt-grid kt-grid--hor kt-grid--root  kt-login kt-login--v1" id="kt_login">
+            <div
+                class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--desktop kt-grid--ver-desktop kt-grid--hor-tablet-and-mobile">
+                <!--begin::Aside-->
+                <div class="kt-grid__item kt-grid__item--order-tablet-and-mobile-2 kt-grid kt-grid--hor kt-login__aside"
+                    style="background-image: url({{ asset('assets/media//bg/bg-4.jpg')}})">
+                    <div class="kt-grid__item">
+                        <a href="#" class="kt-login__logo">
+                            <img src="{{ asset('assets/media/logos/logo-4.png')}}">
+                        </a>
+                    </div>
+                    <div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver">
+                        <div class="kt-grid__item kt-grid__item--middle">
+                            <h3 class="kt-login__title">Welcome to Trainee!</h3>
+                            <h4 class="kt-login__subtitle">The ultimate Quality Compliance app</h4>
+                        </div>
+                    </div>
+                    <div class="kt-grid__item">
+                        <div class="kt-login__info">
+                            <div class="kt-login__copyright">
+                                © {{ date('Y') }} Ankaroo
+                            </div>
+                            <div class="kt-login__menu">
+                                <a href="#" class="kt-link">Privacy</a>
+                                <a href="#" class="kt-link">Legal</a>
+                                <a href="#" class="kt-link">Contact</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- END Page Content -->
+                <!--begin::Aside-->
 
-            </main>
-            <!-- END Main Container -->
+                <!--begin::Content-->
+                <div class="kt-grid__item kt-grid__item--fluid  kt-grid__item--order-tablet-and-mobile-1  kt-login__wrapper">
+                @yield('content')
+                </div>
+                <!--end::Content-->
+            </div>
         </div>
-        <!-- END Page Container -->
 
-        <script src="{{ asset('assets/js/codebase.core.min.js') }}"></script>
 
-        <!--
-            Codebase JS
 
-            Custom functionality including Blocks/Layout API as well as other vital and optional helpers
-            webpack is putting everything together at assets/_es6/main/app.js
-        -->
-        <script src="{{ asset('assets/js/codebase.app.min.js') }}"></script>
+    </div>
 
-        <!-- Page JS Plugins -->
-        <script src="{{ asset('assets/js/plugins/jquery-validation/jquery.validate.min.js') }}"></script>
+    <!-- end:: Page -->
 
-        <!-- Page JS Code -->
-        <script src="{{ asset('assets/js/pages/op_auth_signin.min.js') }}"></script>
-    </body>
+
+    <!-- begin::Global Config(global config for global JS sciprts) -->
+    <script>
+        var KTAppOptions = {"colors":{"state":{"brand":"#374afb","light":"#ffffff","dark":"#282a3c","primary":"#5867dd","success":"#34bfa3","info":"#36a3f7","warning":"#ffb822","danger":"#fd3995"},"base":{"label":["#c5cbe3","#a1a8c3","#3d4465","#3e4466"],"shape":["#f0f3ff","#d9dffa","#afb4d4","#646c9a"]}}};
+    </script>
+    <!-- end::Global Config -->
+
+    <!--begin::Global Theme Bundle(used by all pages) -->
+    <script src="{{ asset('assets/vendors/global/vendors.bundle.js')}}" type="text/javascript"></script>
+    <script src="{{ asset('assets/js/demo2/scripts.bundle.js')}}" type="text/javascript"></script>
+    <!--end::Global Theme Bundle -->
+    <!-- end::Body -->
+</body>
+
 </html>

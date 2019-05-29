@@ -35,7 +35,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm(){
-        return view('auth.login-v2');
+        return view('auth.login');
     }
 
     public function redirectTo(){
